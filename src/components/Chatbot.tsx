@@ -1,0 +1,113 @@
+import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { MessageSquare, X, Send, User, Bot } from 'lucide-react';
+
+export function Chatbot() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState<{ text: string; isBot: boolean }[]>([
+    { text: "Hello! Welcome to ZNAHA. How can we elevate your digital presence today?", isBot: true },
+  ]);
+  const [input, setInput] = useState('');
+
+  const handleSend = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim()) return;
+    
+    // User message
+    const newMessages = [...messages, { text: input, isBot: false }];
+    setMessages(newMessages);
+    setInput('');
+    
+    // Simulated bot response
+    setTimeout(() => {
+      setMessages((prev) => [
+        ...prev,
+        { text: "Thank you for reaching out. One of our luxury brand strategists will be with you shortly to discuss your custom campaign.", isBot: true },
+      ]);
+    }, 1000);
+  };
+
+  return (
+    <>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className="fixed bottom-24 right-6 w-80 sm:w-96 glass-panel rounded-2xl flex flex-col overflow-hidden z-50 border border-yellow-500/20 shadow-2xl shadow-yellow-500/10"
+          >
+            {/* Header */}
+            <div className="bg-black/80 px-4 py-4 border-b border-white/5 flex justify-between items-center">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full bg-yellow-500/20 flex items-center justify-center">
+                  <Bot className="w-5 h-5 text-yellow-500" />
+                </div>
+                <div>
+                  <h3 className="font-serif font-semibold text-white">ZNAHA Concierge</h3>
+                  <p className="text-xs text-white/50">Usually replies in minutes</p>
+                </div>
+              </div>
+              <button onClick={() => setIsOpen(false)} className="text-white/50 hover:text-white transition-colors">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Messages body */}
+            <div className="flex-1 p-4 h-80 overflow-y-auto flex flex-col gap-4 bg-black/40">
+              {messages.map((msg, idx) => (
+                <div key={idx} className={`flex ${msg.isBot ? 'justify-start' : 'justify-end'}`}>
+                  <div 
+                    className={`max-w-[80%] p-3 rounded-2xl text-sm ${
+                      msg.isBot 
+                        ? 'bg-white/5 text-gray-200 rounded-tl-sm border border-white/5' 
+                        : 'bg-yellow-500/90 text-black font-medium rounded-tr-sm'
+                    }`}
+                  >
+                    {msg.text}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Input area */}
+            <form onSubmit={handleSend} className="p-4 bg-black/60 border-t border-white/5 flex gap-2">
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Type your message..."
+                className="flex-1 bg-white/5 border border-white/10 rounded-full px-4 py-2 text-sm text-white focus:outline-none focus:border-yellow-500/50 transition-colors"
+              />
+              <button 
+                type="submit"
+                className="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center text-black hover:bg-yellow-400 transition-colors shrink-0"
+              >
+                <Send className="w-4 h-4 ml-1" />
+              </button>
+            </form>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="fixed bottom-8 right-8 z-50 flex items-center gap-3">
+        <motion.div
+          initial={{ opacity: 0, x: 10 }}
+          animate={{ opacity: 1, x: 0 }}
+          className="bg-white text-black text-[10px] font-bold px-3 py-2 rounded-lg shadow-xl uppercase"
+        >
+          How can we help?
+        </motion.div>
+        <motion.button
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setIsOpen(!isOpen)}
+          className="w-14 h-14 bg-yellow-500 rounded-full flex items-center justify-center text-black shadow-[0_8px_24px_rgba(234,179,8,0.4)]"
+        >
+          {isOpen ? <X className="w-6 h-6" /> : <MessageSquare className="w-6 h-6" />}
+        </motion.button>
+      </div>
+    </>
+  );
+}
