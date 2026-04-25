@@ -56,11 +56,15 @@ export function Chatbot() {
                   <Bot className="w-5 h-5 text-yellow-500" />
                 </div>
                 <div>
-                  <h3 className="font-serif font-semibold text-white">ZNAHA Concierge</h3>
+                  <div role="heading" aria-level={2} className="font-serif font-semibold text-white">ZNAHA Concierge</div>
                   <p className="text-xs text-white/50">Luxury Brand Consultation</p>
                 </div>
               </div>
-              <button onClick={() => setIsOpen(false)} className="text-white/50 hover:text-white transition-colors">
+              <button 
+                onClick={() => setIsOpen(false)} 
+                aria-label="Close chat"
+                className="text-white/50 hover:text-white transition-colors"
+                >
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -89,10 +93,12 @@ export function Chatbot() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Type your message..."
+                aria-label="Type your message"
                 className="flex-1 bg-white/5 border border-white/10 rounded-full px-4 py-2 text-sm text-white focus:outline-none focus:border-yellow-500/50 transition-colors"
               />
               <button 
                 type="submit"
+                aria-label="Send message"
                 className="w-10 h-10 rounded-full bg-yellow-500 flex items-center justify-center text-black hover:bg-yellow-400 transition-colors shrink-0"
               >
                 <Send className="w-4 h-4 ml-1" />
@@ -114,6 +120,8 @@ export function Chatbot() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setIsOpen(!isOpen)}
+          aria-expanded={isOpen}
+          aria-label="Toggle chat window"
           className="w-14 h-14 bg-yellow-500 rounded-full flex items-center justify-center text-black shadow-[0_8px_24px_rgba(234,179,8,0.4)]"
         >
           {isOpen ? <X className="w-6 h-6" /> : <MessageSquare className="w-6 h-6" />}

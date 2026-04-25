@@ -71,7 +71,7 @@ export function ArticlePage() {
         
         <div className="max-w-3xl mx-auto mt-20 pt-10 border-t border-white/10 flex justify-between items-center bg-gradient-to-r from-yellow-500/10 to-transparent p-8 rounded-2xl border-l-4 border-l-yellow-500">
            <div>
-             <h4 className="text-white font-bold text-xl mb-2">Need to execute this strategy?</h4>
+             <h2 className="text-white font-bold text-xl mb-2">Need to execute this strategy?</h2>
              <p className="text-gray-400 text-sm max-w-md">Our engineers can implement these precise architectures for your brand today.</p>
            </div>
            <Link to="/strategy" className="px-6 py-3 bg-white text-black font-bold text-sm tracking-wider uppercase rounded-full hover:bg-yellow-500 transition-all shrink-0">

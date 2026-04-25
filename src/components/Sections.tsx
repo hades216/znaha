@@ -89,7 +89,7 @@ export function Hero() {
           initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.6 }}
         >
           <div className="container mx-auto px-6 mb-16 text-center">
-             <p className="text-[10px] uppercase tracking-[0.4em] font-black text-gray-500">Trusted by Growing Teams</p>
+             <p className="text-[10px] uppercase tracking-[0.4em] font-black text-gray-400">Trusted by Growing Teams</p>
           </div>
           
           <div className="flex overflow-hidden">
@@ -102,7 +102,7 @@ export function Hero() {
                  ['DOORDASH', 'UBER EATS', 'BUMBLE', 'TINDER', 'VENMO', 'SPOTIFY', 'SUBWAY', 'H&M'].map((brand) => (
                     <span 
                       key={`${brand}-${i}`}
-                      className="text-gray-500 text-sm font-black tracking-widest select-none cursor-default"
+                      className="text-gray-400 text-sm font-black tracking-widest select-none cursor-default"
                     >
                       {brand}
                     </span>
@@ -111,38 +111,41 @@ export function Hero() {
              </motion.div>
           </div>
         </motion.div>
-
-        {/* Certifications Marquee - Remade for stability */}
-        <div className="mt-20 py-16 border-y border-white/5 bg-[#0a0a0a] overflow-hidden">
-          <div className="container mx-auto px-6 mb-12 text-center">
-             <p className="text-[10px] uppercase tracking-[0.4em] font-black text-gray-500">Official Certifications & Partnerships</p>
-          </div>
-          
-          <div className="flex overflow-hidden">
-            <motion.div 
-               className="flex gap-16 whitespace-nowrap px-8"
-               animate={{ x: ["0%", "-50%"] }}
-               transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
-            >
-              {[...Array(2)].map((_, i) => (
-                [
-                  {title: "Google Partner", subtitle: "Premier"},
-                  {title: "Meta", subtitle: "Business Partner"},
-                  {title: "Microsoft", subtitle: "Advertising Partner"},
-                  {title: "Amazon Ads", subtitle: "Verified Partner"},
-                  {title: "Inc. 5000", subtitle: "Honoree 2024"}
-                ].map((partner) => (
-                   <div key={`${partner.title}-${i}`} className="flex flex-col items-center justify-center text-center shrink-0">
-                      <div className="text-gray-400 font-bold mb-1 whitespace-nowrap">{partner.title}</div>
-                      <div className="text-[10px] uppercase text-gray-600 tracking-wider font-semibold whitespace-nowrap">{partner.subtitle}</div>
-                   </div>
-                ))
-              ))}
-            </motion.div>
-          </div>
-        </div>
       </div>
     </section>
+  );
+}
+
+export function CertificationsBanner() {
+  return (
+    <div className="py-16 border-y border-white/5 bg-[#0a0a0a] overflow-hidden w-full relative z-10">
+      <div className="container mx-auto px-6 mb-12 text-center">
+         <p className="text-[10px] uppercase tracking-[0.4em] font-black text-gray-400">Official Certifications & Partnerships</p>
+      </div>
+      
+      <div className="flex overflow-hidden">
+        <motion.div 
+           className="flex gap-16 whitespace-nowrap px-8"
+           animate={{ x: ["0%", "-50%"] }}
+           transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
+        >
+          {[...Array(2)].map((_, i) => (
+            [
+              {title: "Google Partner", subtitle: "Premier"},
+              {title: "Meta", subtitle: "Business Partner"},
+              {title: "Microsoft", subtitle: "Advertising Partner"},
+              {title: "Amazon Ads", subtitle: "Verified Partner"},
+              {title: "Inc. 5000", subtitle: "Honoree 2024"}
+            ].map((partner) => (
+               <div key={`${partner.title}-${i}`} className="flex flex-col items-center justify-center text-center shrink-0">
+                  <div className="text-gray-400 font-bold mb-1 whitespace-nowrap">{partner.title}</div>
+                  <div className="text-[10px] uppercase text-gray-400 tracking-wider font-semibold whitespace-nowrap">{partner.subtitle}</div>
+               </div>
+            ))
+          ))}
+        </motion.div>
+      </div>
+    </div>
   );
 }
 
@@ -513,11 +516,11 @@ export function Footer() {
   return (
     <footer className="bg-black relative z-10 border-t border-white/10 pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-10">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-16">
-          <div className="col-span-2 md:col-span-1">
-            <a href="#" className="text-3xl font-serif font-bold tracking-widest text-white flex items-center gap-2 mb-6">
+        <div className="grid grid-cols-2 lg:grid-cols-6 gap-12 mb-16">
+          <div className="col-span-2 lg:col-span-1">
+            <Link to="/" className="text-3xl font-serif font-bold tracking-widest text-white flex items-center gap-2 mb-6">
               ZNAHA<span className="w-2 h-2 rounded-full bg-yellow-500 inline-block" />
-            </a>
+            </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Engineering digital dominance for the world's most ambitious luxury brands.
             </p>
@@ -525,7 +528,7 @@ export function Footer() {
           
           {Object.entries(navigationData).map(([key, category]) => (
             <div key={key}>
-              <h4 className="text-white font-semibold mb-6 uppercase tracking-wider text-sm">{category.title}</h4>
+              <h2 className="text-white font-semibold mb-6 uppercase tracking-wider text-sm">{category.title}</h2>
               <ul className="space-y-4">
                 {category.items.map(item => (
                   <li key={item.id}>
@@ -538,10 +541,10 @@ export function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-600 text-sm">© 2026 ZNAHA Digital Marketing. All rights reserved.</p>
+          <p className="text-gray-500 text-sm">© 2026 ZNAHA Digital Marketing. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link to="/privacy" className="text-gray-600 hover:text-white text-sm">Privacy Policy</Link>
-            <a href="#" className="text-gray-600 hover:text-white text-sm">Terms of Service</a>
+            <Link to="/privacy" className="text-gray-500 hover:text-white text-sm">Privacy Policy</Link>
+            <Link to="/privacy" className="text-gray-500 hover:text-white text-sm">Terms of Service</Link>
           </div>
         </div>
       </div>

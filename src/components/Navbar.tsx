@@ -77,6 +77,8 @@ export function Navbar() {
         <button 
           className="md:hidden text-white relative z-50 p-2"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-expanded={mobileMenuOpen}
+          aria-label="Toggle navigation menu"
         >
           {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
@@ -91,10 +93,10 @@ export function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden fixed inset-0 bg-black/95 backdrop-blur-3xl z-40 flex flex-col justify-center items-center"
           >
-            <div className="flex flex-col items-center gap-6 w-full px-6">
+            <div className="flex flex-col items-center gap-6 w-full px-6 h-full overflow-y-auto py-20 pb-32">
               {Object.entries(navigationData).map(([key, category]) => (
                 <div key={key} className="w-full text-center">
-                  <h4 className="text-yellow-500 font-bold mb-2 uppercase text-xs">{category.title}</h4>
+                  <div role="heading" aria-level={2} className="text-yellow-500 font-bold mb-2 uppercase text-xs">{category.title}</div>
                    {category.items.map(item => (
                     <Link 
                       key={item.id}

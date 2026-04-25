@@ -37,7 +37,7 @@ export function CookieBanner() {
               </div>
               
               <div className="flex-1">
-                <h4 className="text-white font-bold mb-2">Privacy & Protocol</h4>
+                <div role="heading" aria-level={2} className="text-white font-bold mb-2">Privacy & Protocol</div>
                 <p className="text-sm text-gray-400 leading-relaxed mb-6">
                   We use cookies to engineer the ultimate digital experience and analyze our growth performance. By continuing, you consent to our data collection architectures.
                 </p>
@@ -45,12 +45,14 @@ export function CookieBanner() {
                 <div className="flex flex-col sm:flex-row gap-3">
                   <button
                     onClick={() => handleConsent('all')}
+                    aria-label="Accept all cookies"
                     className="px-6 py-2.5 bg-yellow-500 text-black font-bold text-xs uppercase tracking-widest rounded-full hover:bg-yellow-400 transition-all"
                   >
                     Accept All
                   </button>
                   <button
                     onClick={() => handleConsent('essential')}
+                    aria-label="Accept essential cookies"
                     className="px-6 py-2.5 bg-white/5 border border-white/10 text-white font-bold text-xs uppercase tracking-widest rounded-full hover:bg-white/10 transition-all"
                   >
                     Essential Only
@@ -58,10 +60,10 @@ export function CookieBanner() {
                 </div>
                 
                 <div className="mt-4 flex items-center justify-between">
-                  <Link to="/privacy" className="text-[10px] text-gray-500 hover:text-yellow-500 transition-colors uppercase font-bold tracking-tighter">
+                  <Link to="/privacy" className="text-[10px] text-gray-400 hover:text-yellow-500 transition-colors uppercase font-bold tracking-tighter">
                     Review Privacy Policy
                   </Link>
-                  <button onClick={() => setIsVisible(false)} className="text-gray-500 hover:text-white transition-colors">
+                  <button onClick={() => setIsVisible(false)} aria-label="Close" className="text-gray-400 hover:text-white transition-colors">
                     <X className="w-4 h-4" />
                   </button>
                 </div>

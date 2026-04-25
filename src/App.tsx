@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { Background3D } from './components/Background3D';
 import { Navbar } from './components/Navbar';
 import { Chatbot } from './components/Chatbot';
-import { Footer } from './components/Sections';
+import { Footer, CertificationsBanner } from './components/Sections';
 import { Home } from './pages/Home';
 import { ServicesPage } from './pages/ServicesPage';
 import { StrategyPage } from './pages/StrategyPage';
@@ -70,6 +70,7 @@ export default function App() {
         
         <AnimatedRoutes />
 
+        <CertificationsBanner />
         <Footer />
         <CookieBanner />
         <Chatbot />

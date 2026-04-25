@@ -118,6 +118,8 @@ export function GenericPage() {
                     <div key={i} className="border border-white/10 rounded-2xl bg-white/5 overflow-hidden">
                       <button
                         onClick={() => setOpenFaqIndex(openFaqIndex === i ? null : i)}
+                        aria-expanded={openFaqIndex === i}
+                        aria-controls={`faq-generic-${i}`}
                         className="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-yellow-500/50"
                       >
                         <span className="font-semibold text-white text-lg">{faq.question}</span>
@@ -130,6 +132,7 @@ export function GenericPage() {
                       <AnimatePresence>
                         {openFaqIndex === i && (
                           <motion.div
+                            id={`faq-generic-${i}`}
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}

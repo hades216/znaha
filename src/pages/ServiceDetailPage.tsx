@@ -77,7 +77,7 @@ export function ServiceDetailPage() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                       <div className="absolute bottom-8 left-8">
                          <p className="text-yellow-500 font-bold text-[10px] uppercase tracking-[0.3em] mb-2">Service Spec</p>
-                         <h4 className="text-white font-bold text-xl uppercase tracking-tighter">ZNAHA Protocol {service.id.toUpperCase()}</h4>
+                         <h2 className="text-white font-bold text-xl uppercase tracking-tighter">ZNAHA Protocol {service.id.toUpperCase()}</h2>
                       </div>
                    </div>
                 </motion.div>
@@ -93,7 +93,7 @@ export function ServiceDetailPage() {
                 <div key={idx} className="p-8 bg-white/5 border border-white/10 rounded-2xl flex items-start gap-4 hover:border-yellow-500/30 transition-colors">
                   <CheckCircle2 className="w-8 h-8 text-yellow-500 shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="text-lg font-bold text-white mb-2">{feature}</h4>
+                    <h3 className="text-lg font-bold text-white mb-2">{feature}</h3>
                     <p className="text-sm text-gray-400">Integrated as standard protocol within our tailored {service.title.toLowerCase()} roadmaps to ensure uncompromising market dominance.</p>
                   </div>
                 </div>
@@ -117,6 +117,8 @@ export function ServiceDetailPage() {
                 >
                   <button 
                     onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)}
+                    aria-expanded={openFaqIndex === index}
+                    aria-controls={`faq-answer-${index}`}
                     className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
                   >
                     <span className="font-bold text-lg">{faq.question}</span>
@@ -126,6 +128,7 @@ export function ServiceDetailPage() {
                   <AnimatePresence>
                     {openFaqIndex === index && (
                       <motion.div
+                        id={`faq-answer-${index}`}
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
