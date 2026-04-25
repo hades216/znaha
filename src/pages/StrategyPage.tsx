@@ -1,19 +1,70 @@
 import { motion } from 'motion/react';
+import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { ArrowRight, Mail, Phone, MapPin } from 'lucide-react';
+import { ArrowRight, Mail, Phone, MapPin, Target } from 'lucide-react';
 
-const fadeIn = {
+const fadeIn: any = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.33, 1, 0.68, 1] } }
 };
 
 export function StrategyPage() {
   const [searchParams] = useSearchParams();
   const service = searchParams.get('service');
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    company: '',
+    topic: service ? `Strategy Inquiry: ${service.toUpperCase()}` : `Strategy Session Inquiry`,
+    message: ''
+  });
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const defaultSubject = service 
-    ? `Strategy Inquiry: ${service.toUpperCase()}`
-    : `Strategy Session Inquiry`;
+  const validateField = (name: string, value: string) => {
+    let error = '';
+    if (!value.trim()) {
+      error = 'This field is required';
+    } else if (name === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      error = 'Invalid email address';
+    } else if ((name === 'firstName' || name === 'lastName') && value.trim().length < 2) {
+      error = 'Must be at least 2 characters';
+    } else if (name === 'message' && value.trim().length < 10) {
+      error = 'Please provide more details (min 10 chars)';
+    }
+    setErrors(prev => ({ ...prev, [name]: error }));
+    return error;
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    validateField(name, value);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newErrors: Record<string, string> = {};
+    Object.keys(formData).forEach(key => {
+      const error = validateField(key, (formData as any)[key]);
+      if (error) newErrors[key] = error;
+    });
+
+    if (Object.keys(newErrors).length === 0) {
+      setIsSubmitted(true);
+    } else {
+      setErrors(newErrors);
+    }
+  };
+
+  const getInputClass = (name: string) => {
+    return `w-full bg-black/40 border rounded-xl px-4 py-3 placeholder-white/20 text-white focus:outline-none transition-all ${
+      errors[name] 
+        ? 'border-red-500 focus:border-red-500 shadow-[0_0_10px_rgba(239,68,68,0.2)]' 
+        : 'border-white/10 focus:border-yellow-500/50'
+    }`;
+  };
 
   return (
     <main className="pt-32 pb-20 relative z-10 min-h-screen">
@@ -48,43 +99,104 @@ export function StrategyPage() {
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/10 rounded-full blur-[80px] -mr-10 -mt-10 pointer-events-none" />
             
-            <form className="relative z-10 flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="flex flex-col gap-2">
-                  <label className="text-xs uppercase tracking-widest text-gray-400 font-bold">First Name</label>
-                  <input type="text" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 placeholder-white/20 text-white focus:outline-none focus:border-yellow-500/50 transition-colors" placeholder="James" />
+            {isSubmitted ? (
+               <div className="relative z-10 flex flex-col items-center justify-center text-center h-full py-16">
+                 <div className="w-20 h-20 bg-yellow-500/20 text-yellow-500 rounded-full flex items-center justify-center mb-6 border border-yellow-500/50">
+                   <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                 </div>
+                 <h3 className="text-3xl font-bold text-white mb-4">Request Logged.</h3>
+                 <p className="text-gray-400">Our partners will review your objectives and contact you within boundaries of 2 business hours to schedule your strategy session.</p>
+               </div>
+            ) : (
+              <form className="relative z-10 flex flex-col gap-6" onSubmit={handleSubmit} noValidate>
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="flex flex-col gap-2">
+                    <label className="text-xs uppercase tracking-widest text-gray-400 font-bold">First Name</label>
+                    <input 
+                      type="text" 
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
+                      className={getInputClass('firstName')} 
+                      placeholder="James" 
+                    />
+                    {errors.firstName && <span className="text-red-500 text-[10px] uppercase font-bold tracking-widest mt-1">{errors.firstName}</span>}
+                  </div>
+                  <div className="flex flex-col gap-2">
+                    <label className="text-xs uppercase tracking-widest text-gray-400 font-bold">Last Name</label>
+                    <input 
+                      type="text" 
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
+                      className={getInputClass('lastName')} 
+                      placeholder="Stirling" 
+                    />
+                    {errors.lastName && <span className="text-red-500 text-[10px] uppercase font-bold tracking-widest mt-1">{errors.lastName}</span>}
+                  </div>
                 </div>
+
                 <div className="flex flex-col gap-2">
-                  <label className="text-xs uppercase tracking-widest text-gray-400 font-bold">Last Name</label>
-                  <input type="text" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 placeholder-white/20 text-white focus:outline-none focus:border-yellow-500/50 transition-colors" placeholder="Stirling" />
+                  <label className="text-xs uppercase tracking-widest text-gray-400 font-bold">Work Email</label>
+                  <input 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className={getInputClass('email')} 
+                    placeholder="james@luxurybrand.com" 
+                  />
+                  {errors.email && <span className="text-red-500 text-[10px] uppercase font-bold tracking-widest mt-1">{errors.email}</span>}
                 </div>
-              </div>
 
-              <div className="flex flex-col gap-2">
-                <label className="text-xs uppercase tracking-widest text-gray-400 font-bold">Work Email</label>
-                <input type="email" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 placeholder-white/20 text-white focus:outline-none focus:border-yellow-500/50 transition-colors" placeholder="james@luxurybrand.com" />
-              </div>
+                <div className="flex flex-col gap-2">
+                  <label className="text-xs uppercase tracking-widest text-gray-400 font-bold">Company / Brand</label>
+                  <input 
+                    type="text" 
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    className={getInputClass('company')} 
+                    placeholder="E.g. Vanguard Estates" 
+                  />
+                  {errors.company && <span className="text-red-500 text-[10px] uppercase font-bold tracking-widest mt-1">{errors.company}</span>}
+                </div>
 
-              <div className="flex flex-col gap-2">
-                <label className="text-xs uppercase tracking-widest text-gray-400 font-bold">Company / Brand</label>
-                <input type="text" className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 placeholder-white/20 text-white focus:outline-none focus:border-yellow-500/50 transition-colors" placeholder="E.g. Vanguard Estates" />
-              </div>
+                <div className="flex flex-col gap-2">
+                  <label className="text-xs uppercase tracking-widest text-gray-400 font-bold">Inquiry Topic</label>
+                  <input 
+                    type="text" 
+                    name="topic"
+                    value={formData.topic}
+                    onChange={handleInputChange}
+                    className={getInputClass('topic')} 
+                    placeholder="What are you looking to achieve?" 
+                  />
+                  {errors.topic && <span className="text-red-500 text-[10px] uppercase font-bold tracking-widest mt-1">{errors.topic}</span>}
+                </div>
+                
+                <div className="flex flex-col gap-2">
+                  <label className="text-xs uppercase tracking-widest text-gray-400 font-bold">Message details</label>
+                  <textarea 
+                    rows={4} 
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    className={getInputClass('message')} 
+                    placeholder="Share revenue goals, current bottlenecks, or specific services required..." 
+                  />
+                  {errors.message && <span className="text-red-500 text-[10px] uppercase font-bold tracking-widest mt-1">{errors.message}</span>}
+                </div>
 
-              <div className="flex flex-col gap-2">
-                <label className="text-xs uppercase tracking-widest text-gray-400 font-bold">Inquiry Topic</label>
-                <input type="text" defaultValue={defaultSubject} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 placeholder-white/20 text-white focus:outline-none focus:border-yellow-500/50 transition-colors" placeholder="What are you looking to achieve?" />
-              </div>
-              
-              <div className="flex flex-col gap-2">
-                <label className="text-xs uppercase tracking-widest text-gray-400 font-bold">Message details</label>
-                <textarea rows={4} className="w-full bg-black/40 border border-white/10 rounded-xl px-4 py-3 placeholder-white/20 text-white focus:outline-none focus:border-yellow-500/50 transition-colors" placeholder="Share revenue goals, current bottlenecks, or specific services required..." />
-              </div>
-
-              <button className="w-full mt-4 bg-yellow-500 text-black font-bold text-sm tracking-wider uppercase py-4 rounded-full hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.2)] flex justify-center items-center gap-2">
-                Request Private Consultation
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </form>
+                <button 
+                  type="submit" 
+                  className="w-full mt-4 bg-yellow-500 text-black font-bold text-sm tracking-wider uppercase py-4 rounded-full hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.2)] flex justify-center items-center gap-2"
+                >
+                  Request Private Consultation
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </form>
+            )}
           </motion.div>
 
           {/* Contact Details side */}

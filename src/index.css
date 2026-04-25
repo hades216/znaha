@@ -7,6 +7,16 @@
   --color-brand-yellow: #EAB308;
   --color-brand-black: #0A0A0A;
   --color-brand-white: #FAFAFA;
+  --animate-marquee: marquee 30s linear infinite;
+  
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 @layer base {

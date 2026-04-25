@@ -1,10 +1,9 @@
 import { useRef, useMemo } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial } from '@react-three/drei';
-import * as random from 'three/math/MathUtils';
 
 function ParticleSwarm() {
-  const ref = useRef<any>();
+  const ref = useRef<any>(null);
   
   // Create a memoized array of particle positions
   const sphere = useMemo(() => {

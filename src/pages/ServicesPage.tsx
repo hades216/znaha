@@ -1,68 +1,18 @@
 import { motion } from 'motion/react';
-import { Target, Zap, Globe, MessageSquare, TrendingUp, BarChart3, CheckCircle2, ArrowRight } from 'lucide-react';
+import { ArrowRight, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { servicesData } from '../data/services';
 
-const fadeIn = {
+const fadeIn: any = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.33, 1, 0.68, 1] } }
 };
 
-const stagger = {
+const stagger: any = {
   visible: { transition: { staggerChildren: 0.1 } }
 };
 
 export function ServicesPage() {
-  const detailedServices = [
-    {
-      id: "seo",
-      icon: <Target className="w-8 h-8 text-yellow-500"/>,
-      title: "SEO Optimization",
-      desc: "Dominate search results with our technical and content-led SEO strategies designed for high-intent luxury buyers. We rebuild your site architecture to appease both algorithms and affluent prospects.",
-      features: ["Technical SEO Audits", "High-Authority Link Building", "Competitor Gap Analysis", "Content Silo Architecture"],
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80"
-    },
-    {
-      id: "ppc",
-      icon: <Zap className="w-8 h-8 text-yellow-500"/>,
-      title: "Performance PPC",
-      desc: "Maximize ROI with hyper-targeted paid campaigns across Google Ads, Bing, and premium ad networks. Stop wasting ad spend and start acquiring aggressively.",
-      features: ["Search & Display Campaigns", "Retargeting Infrastructure", "A/B Multivariate Testing", "Conversion Tracking Automation"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80"
-    },
-    {
-      id: "web-design",
-      icon: <Globe className="w-8 h-8 text-yellow-500"/>,
-      title: "Web Design & Development",
-      desc: "Immersive, high-performance websites that serve as the luxurious digital storefront for your brand. Built on modern stacks for blistering speed.",
-      features: ["Bespoke UI/UX Design", "React & Next.js Architecture", "3D WebGL Experiences", "E-commerce Optimization"],
-      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80"
-    },
-    {
-      id: "social-media",
-      icon: <MessageSquare className="w-8 h-8 text-yellow-500"/>,
-      title: "Social Media Styling",
-      desc: "Curated social presences that build brand equity and engage affluent demographics. Elevate your visual identity across Instagram, LinkedIn, and TikTok.",
-      features: ["Platform Strategy", "High-End Content Production", "Community Management", "Influencer Partnerships"],
-      image: "https://images.unsplash.com/photo-1616469829581-73993eb86b02?auto=format&fit=crop&q=80"
-    },
-    {
-      id: "cro",
-      icon: <TrendingUp className="w-8 h-8 text-yellow-500"/>,
-      title: "Conversion Rate Optimization",
-      desc: "Data-backed testing to turn more of your hard-earned traffic into high-value leads and sales. We close the leaks in your funnel.",
-      features: ["Heatmap Analysis", "Checkout Flow Friction Removal", "Landing Page Personalization", "Form Optimization"],
-      image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&q=80"
-    },
-    {
-      id: "analytics",
-      icon: <BarChart3 className="w-8 h-8 text-yellow-500"/>,
-      title: "Advanced Analytics",
-      desc: "Closed-loop reporting and marketing automation to track every dollar of ROI down to the cent. Know exactly what drives your growth.",
-      features: ["Custom Dashboard Engineering", "Server-Side Tracking", "Attribution Modeling", "CRM Integration"],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80"
-    }
-  ];
-
   return (
     <main className="pt-32 pb-20 relative z-10 min-h-screen">
       {/* Services Header */}
@@ -79,65 +29,37 @@ export function ServicesPage() {
             </span>
           </h1>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto font-sans leading-relaxed">
-            We operate at the intersection of elite creative and ruthless performance data. Explore our suite of digital engineering services.
+            We operate at the intersection of elite creative and ruthless performance data. Explore our full suite of 10 dedicated digital engineering services designed specifically for luxury brands.
           </p>
         </motion.div>
       </section>
 
-      {/* Services Detailed List */}
+      {/* Services Index List */}
       <section className="px-6 md:px-12 max-w-7xl mx-auto">
-        <div className="space-y-32">
-          {detailedServices.map((service, index) => (
+         <motion.div 
+          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={stagger}
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {servicesData.map((service, i) => (
             <motion.div 
-              key={service.id}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-100px" }}
-              variants={fadeIn}
-              className={`flex flex-col gap-12 lg:gap-20 items-center ${
-                index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'
-              }`}
+              key={i} variants={fadeIn}
+              className="p-6 md:p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-yellow-500/30 transition-all group relative overflow-hidden flex flex-col min-h-[360px]"
             >
-              {/* Text Content */}
-              <div className="flex-1 w-full">
-                <div className="mb-6 inline-flex p-4 rounded-2xl bg-white/5 border border-white/10 text-yellow-500 shadow-[0_0_30px_rgba(234,179,8,0.1)]">
-                  {service.icon}
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">{service.title}</h2>
-                <p className="text-gray-400 text-lg leading-relaxed mb-8">{service.desc}</p>
-                
-                <ul className="grid sm:grid-cols-2 gap-4 mb-10">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
-                      <span className="text-sm font-medium text-gray-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <Link to={`/strategy?service=${service.id}`} className="inline-flex items-center gap-2 text-sm font-bold text-yellow-500 hover:text-yellow-400 transition-colors uppercase tracking-wider group">
-                  Discuss This Strategy
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl -mr-10 -mt-10 transition-transform group-hover:scale-150" />
+              
+              <div className="mb-8 inline-flex p-4 rounded-xl bg-black/50 border border-white/5 self-start transform transition-all duration-500 group-hover:scale-110 group-hover:-rotate-6 group-hover:shadow-[0_0_20px_rgba(234,179,8,0.2)]">
+                {service.icon}
               </div>
-
-              {/* Image Content */}
-              <div className="flex-1 w-full relative">
-                <div className="absolute inset-0 bg-yellow-500/20 rounded-3xl blur-[80px] -z-10"></div>
-                <div className="aspect-[4/3] rounded-3xl overflow-hidden border border-white/10 bg-[#111] p-2 shadow-2xl relative">
-                   <div className="w-full h-full rounded-2xl overflow-hidden relative">
-                      <img 
-                        src={service.image} 
-                        alt={service.title} 
-                        className="w-full h-full object-cover opacity-70 hover:opacity-100 hover:scale-105 transition-all duration-700"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-tr from-black/60 to-transparent pointer-events-none"></div>
-                   </div>
-                </div>
-              </div>
+              
+              <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-8 flex-1">{service.shortDesc}</p>
+              
+              <Link to={`/services/${service.id}`} className="inline-flex items-center text-[11px] uppercase font-bold text-yellow-500 hover:text-yellow-400 transition-colors mt-auto group-hover:translate-x-1 duration-300">
+                Explore Full Protocol <ChevronRight className="w-4 h-4 ml-1" />
+              </Link>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </section>
 
       {/* Services CTA */}
@@ -147,10 +69,12 @@ export function ServicesPage() {
           <p className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
             Stop relying on generic marketing. Partner with ZNAHA to engineer a bespoke acquisition engine for your brand.
           </p>
-          <Link to="/strategy" className="inline-flex items-center justify-center px-10 py-5 bg-yellow-500 text-black font-bold rounded-full hover:bg-yellow-400 transition-all shadow-[0_0_30px_rgba(234,179,8,0.3)] gap-2 text-lg">
-            SCHEDULE A STRATEGY SESSION
-            <ArrowRight className="w-5 h-5" />
-          </Link>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
+            <Link to="/strategy" className="inline-flex items-center justify-center px-10 py-5 bg-yellow-500 text-black font-bold rounded-full hover:bg-yellow-400 transition-all shadow-[0_0_30px_rgba(234,179,8,0.3)] gap-2 text-lg uppercase tracking-wider">
+              Get My Free Proposal
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
         </div>
       </section>
     </main>

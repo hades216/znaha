@@ -5,7 +5,7 @@ import { MessageSquare, X, Send, User, Bot } from 'lucide-react';
 export function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<{ text: string; isBot: boolean }[]>([
-    { text: "Hello! Welcome to ZNAHA. How can we elevate your digital presence today?", isBot: true },
+    { text: "Welcome to the ZNAHA Digital Concierge. We specialize in the architectural alignment of elite digital ecosystems. How may we consult on your bespoke growth strategy or ROI amplification today?", isBot: true },
   ]);
   const [input, setInput] = useState('');
 
@@ -18,13 +18,24 @@ export function Chatbot() {
     setMessages(newMessages);
     setInput('');
     
-    // Simulated bot response
+    // Simulated luxurious/consultative bot response
     setTimeout(() => {
+      const userMessage = input.toLowerCase();
+      let response = "Certainly. I have analyzed the initial parameters of your inquiry. It is a strategic imperative for our lead consultants to review your current market positioning. We shall conduct a comprehensive audit of your digital architecture and contact you to discuss an uncompromising roadmap.";
+      
+      if (userMessage.includes('price') || userMessage.includes('cost') || userMessage.includes('budget')) {
+        response = "Understood. Our investment models are engineered for substantial ROI amplification and are reserved for brands committed to absolute market dominance. A senior partner will reach out to discuss the structural investment required for your bespoke transformation.";
+      } else if (userMessage.includes('seo') || userMessage.includes('search')) {
+        response = "Regarding your search presence, architectural alignment with high-intent digital real estate is crucial. Our OmniSEO® protocols ensure your brand remains the primary authority. I am alerting our search engineers to prioritize your topical integrity.";
+      } else if (userMessage.includes('design') || userMessage.includes('website')) {
+        response = "Certainly. Your digital interface is the atmospheric cornerstone of your brand identity. We focus on engineering immersive environments that resonate with high-net-worth expectations. I will initiate a review of your frontend's aesthetic and functional alignment.";
+      }
+
       setMessages((prev) => [
         ...prev,
-        { text: "Thank you for reaching out. One of our luxury brand strategists will be with you shortly to discuss your custom campaign.", isBot: true },
+        { text: response, isBot: true },
       ]);
-    }, 1000);
+    }, 1200);
   };
 
   return (
@@ -46,7 +57,7 @@ export function Chatbot() {
                 </div>
                 <div>
                   <h3 className="font-serif font-semibold text-white">ZNAHA Concierge</h3>
-                  <p className="text-xs text-white/50">Usually replies in minutes</p>
+                  <p className="text-xs text-white/50">Luxury Brand Consultation</p>
                 </div>
               </div>
               <button onClick={() => setIsOpen(false)} className="text-white/50 hover:text-white transition-colors">
@@ -97,7 +108,7 @@ export function Chatbot() {
           animate={{ opacity: 1, x: 0 }}
           className="bg-white text-black text-[10px] font-bold px-3 py-2 rounded-lg shadow-xl uppercase"
         >
-          How can we help?
+          Consult with Concierge
         </motion.div>
         <motion.button
           whileHover={{ scale: 1.05 }}

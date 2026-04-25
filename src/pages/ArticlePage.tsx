@@ -1,62 +1,22 @@
 import { motion } from 'motion/react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Calendar, User, Share2 } from 'lucide-react';
+import { articles } from '../data/articles';
 
-const articlesDb: Record<string, any> = {
-  "seo-paradigm": { 
-    title: "The 2026 SEO Paradigm for Luxury Brands", 
-    category: "SEO Insights", 
-    date: "April 18, 2026", 
-    author: "Elena Rostova",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80",
-    content: `
-      <p>The landscape of search engine optimization has irrevocably shifted. For luxury brands, an arms race built on algorithmic manipulation is a losing strategy. Today, search algorithms prioritize structural excellence, high-end thematic relevance, and uncompromising user experience over simple keyword density.</p>
-      <h2>The Demise of Traditional Metrics</h2>
-      <p>Volume-driven strategies are yielding diminishing returns. High-net-worth individuals interact with search intent differently. Their queries are zero-click oriented, highly specific, and demand immediate authority. Brands must transition from "ranking for keywords" to "owning topical silos."</p>
-      <h2>Zero-UI and Ambient Discoverability</h2>
-      <p>As voice search and AI overviews dominate the SERPs, your brand's data must be immaculately structured. We are seeing luxury conversions originate without a single traditional search click. It requires engineering your site's schema to perfectly spoon-feed AI crawlers the exact provenance and exclusivity of your products.</p>
-      <blockquote>"If your digital experience requires patience, you have already lost the affluent consumer."</blockquote>
-      <p>Luxury is defined by the absence of friction. Your technical SEO—site speed, Core Web Vitals, seamless interactivity—is no longer just a ranking factor; it is the digital equivalent of a marble-floored lobby.</p>
-    `
-  },
-  "conversion-funnel": { 
-    title: "Decoding the High-Net-Worth Conversion Funnel", 
-    category: "Strategy", 
-    date: "April 12, 2026", 
-    author: "Marcus Vance",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80",
-    content: `
-      <p>Unlike traditional e-commerce, the luxury sales cycle is prolonged, non-linear, and heavily reliant on repeated, varied touchpoints across multiple devices.</p>
-      <p>We analyze the data points dictating this funnel...</p>
-    `
-  },
-  "aesthetic-efficiency": { 
-    title: "Why Aesthetic Quality Directly Correlates to Ad Spend Efficiency", 
-    category: "Design", 
-    date: "April 05, 2026", 
-    author: "Sarah Jin",
-    image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&q=80",
-    content: `
-      <p>Visual presentation is not just a branding exercise; it is a mathematical imperative for reducing CAC (Customer Acquisition Cost).</p>
-      <p>Our recent multivariate tests show a direct correlation between custom, high-resolution aesthetic design elements and a plummeting cost-per-click across premium ad networks.</p>
-    `
-  }
-};
-
-const fadeIn = {
+const fadeIn: any = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.33, 1, 0.68, 1] } }
 };
 
 export function ArticlePage() {
   const { slug } = useParams<{ slug: string }>();
-  const article = slug ? articlesDb[slug] : null;
+  const article = articles.find(a => a.slug === slug);
 
   if (!article) {
     return (
       <main className="pt-40 pb-20 min-h-[70vh] flex items-center justify-center flex-col text-center z-10 relative">
         <h1 className="text-4xl font-bold mb-4">Article Not Found.</h1>
-        <Link to="/#blog" className="text-yellow-500 hover:underline">Return to Insights</Link>
+        <Link to="/insights" className="text-yellow-500 hover:underline">Return to Insights</Link>
       </main>
     );
   }
@@ -65,7 +25,7 @@ export function ArticlePage() {
     <main className="pt-32 pb-20 relative z-10 min-h-screen">
       <article className="max-w-4xl mx-auto px-6 md:px-12">
         <motion.div initial="hidden" animate="visible" variants={fadeIn}>
-          <Link to="/#blog" className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-yellow-500 transition-colors mb-8 group">
+          <Link to="/insights" className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-yellow-500 transition-colors mb-8 group">
             <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
             Back to Insights
           </Link>

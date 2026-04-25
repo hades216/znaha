@@ -1,4 +1,4 @@
-import { Hero, Services, Portfolio, Testimonials, Blog } from '../components/Sections';
+import { Hero, Services, Portfolio, Testimonials, Blog, HomeContact } from '../components/Sections';
 
 export function Home() {
   return (
@@ -8,6 +8,7 @@ export function Home() {
       <Portfolio />
       <Testimonials />
       <Blog />
+      <HomeContact />
     </main>
   );
 }
