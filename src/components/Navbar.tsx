@@ -15,6 +15,15 @@ export function Navbar() {
     i18n.changeLanguage(lng);
   };
 
+  const fadeIn: any = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } }
+  };
+
+  const stagger: any = {
+    visible: { transition: { staggerChildren: 0.05 } }
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
@@ -50,11 +59,15 @@ export function Navbar() {
               
               <div className="absolute top-full left-1/2 -translate-x-1/2 pt-6 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300">
                 <div className="bg-[#0a0a0a] border border-white/10 rounded-2xl shadow-2xl p-6 min-w-[200px]">
-                  {category.items.map(item => (
-                    <Link key={item.id} to={`/${item.id}`} className="block text-white hover:text-yellow-500 py-2 transition-colors whitespace-nowrap">
-                      {item.name}
-                    </Link>
-                  ))}
+                  {category.items.map(item => {
+                    const isDetailedService = category.title === "Services";
+                    const route = isDetailedService ? `/services/${item.id}` : `/${item.id}`;
+                    return (
+                      <Link key={item.id} to={route} className="block text-white hover:text-yellow-500 py-2 transition-colors whitespace-nowrap">
+                        {item.name}
+                      </Link>
+                    );
+                  })}
                 </div>
               </div>
             </div>
@@ -93,23 +106,30 @@ export function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden fixed inset-0 bg-black/95 backdrop-blur-3xl z-40 flex flex-col justify-center items-center"
           >
-            <div className="flex flex-col items-center gap-6 w-full px-6 h-full overflow-y-auto py-20 pb-32">
+            <motion.div 
+              className="flex flex-col items-center gap-6 w-full px-6 h-full overflow-y-auto py-20 pb-32"
+              initial="hidden" animate="visible" variants={stagger}
+            >
               {Object.entries(navigationData).map(([key, category]) => (
-                <div key={key} className="w-full text-center">
-                  <div role="heading" aria-level={2} className="text-yellow-500 font-bold mb-2 uppercase text-xs">{category.title}</div>
-                   {category.items.map(item => (
-                    <Link 
-                      key={item.id}
-                      to={`/${item.id}`}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className="block text-lg font-bold text-gray-200 hover:text-yellow-400 py-1"
-                    >
-                      {item.name}
-                    </Link>
-                   ))}
-                </div>
+                <motion.div key={key} variants={fadeIn} className="w-full text-center">
+                  <div role="heading" aria-level={2} className="text-yellow-500 font-bold mb-2 uppercase text-xs tracking-widest">{category.title}</div>
+                   {category.items.map(item => {
+                    const isDetailedService = category.title === "Services";
+                    const route = isDetailedService ? `/services/${item.id}` : `/${item.id}`;
+                    return (
+                      <Link 
+                        key={item.id}
+                        to={route}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block text-lg font-bold text-gray-200 hover:text-yellow-400 py-1 transition-colors break-words"
+                      >
+                        {item.name}
+                      </Link>
+                    );
+                   })}
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </motion.nav>
         )}
       </AnimatePresence>

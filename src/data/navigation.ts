@@ -2,24 +2,24 @@ export const navigationData = {
   services: {
     title: "Services",
     items: [
-      { id: 'digital-marketing', name: "Digital Marketing Services" },
+      { id: 'digital-marketing-revenue', name: "Digital Marketing Services" },
       { id: 'seo', name: "SEO Services" },
       { id: 'ppc', name: "PPC Services" },
-      { id: 'content', name: "Content Marketing Services" },
-      { id: 'social', name: "Social Media Services" },
+      { id: 'content-email', name: "Content Marketing Services" },
+      { id: 'social-media', name: "Social Media Services" },
       { id: 'web-design', name: "Web Design Services" },
-      { id: 'ads', name: "Digital Advertising Services" },
+      { id: 'amazon', name: "Digital Advertising Services" },
     ]
   },
   knowledgebase: {
     title: "Knowledgebase",
     items: [
-      { id: 'knowledge-digital', name: "Digital Marketing" },
+      { id: 'knowledge-digital-marketing-revenue', name: "Digital Marketing" },
       { id: 'knowledge-seo', name: "SEO" },
       { id: 'knowledge-ppc', name: "PPC" },
-      { id: 'knowledge-content', name: "Content Marketing" },
-      { id: 'knowledge-social', name: "Social Media" },
-      { id: 'knowledge-web', name: "Web Design" },
+      { id: 'knowledge-content-email', name: "Content Marketing" },
+      { id: 'knowledge-social-media', name: "Social Media" },
+      { id: 'knowledge-web-design', name: "Web Design" },
       { id: 'knowledge-ai', name: "AI" },
     ]
   },

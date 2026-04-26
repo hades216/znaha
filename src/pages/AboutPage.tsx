@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { ArrowRight, Trophy, Users, Globe, Building2, Target } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { FloatingText, TiltHeading } from '../components/FloatingText';
 
 const fadeIn: any = {
   hidden: { opacity: 0, y: 40 },
@@ -17,12 +18,14 @@ export function AboutPage() {
             <span className="flex h-2 w-2 rounded-full bg-yellow-500" />
             <span className="text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Our Firm</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold leading-[0.9] text-white mb-8 tracking-tight">
-            Engineering the <br className="hidden md:block"/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-200 to-white">
-              Vanguard of Digital.
-            </span>
-          </h1>
+          <TiltHeading>
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-[1.1] md:leading-[0.9] text-white mb-8 tracking-tight break-words">
+              <FloatingText depth={15} className="block">Engineering the</FloatingText>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-200 to-white block">
+                Vanguard of Digital.
+              </span>
+            </h1>
+          </TiltHeading>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto font-sans leading-relaxed">
             ZNAHA is not an agency. We are a collective of data scientists, elite creatives, and growth engineers dedicated to establishing absolute market supremacy for the world's most ambitious luxury brands.
           </p>
@@ -73,8 +76,14 @@ export function AboutPage() {
                </div>
             </motion.div>
 
-            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="space-y-8">
-              <h2 className="text-4xl md:text-5xl font-bold">Refusal to Accept the Status Quo.</h2>
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="space-y-8"
+            >
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold break-words leading-tight">Refusal to Accept the Status Quo.</h2>
               <p className="text-gray-400 text-lg leading-relaxed">
                 Founded in New York, ZNAHA emerged from a profound dissatisfaction with the traditional agency model. We saw luxury brands receiving generalized playbooks from agencies that didn't understand the nuance of high-ticket buyer psychology.
               </p>

@@ -1,8 +1,9 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
-import { CheckCircle2, ArrowRight, ChevronDown, ArrowLeft } from 'lucide-react';
+import { CheckCircle2, ArrowRight, ChevronDown, ArrowLeft, Coins } from 'lucide-react';
 import { servicesData } from '../data/services';
+import { FloatingText, TiltHeading } from '../components/FloatingText';
 
 const fadeIn: any = {
   hidden: { opacity: 0, y: 40 },
@@ -45,13 +46,19 @@ export function ServiceDetailPage() {
                 >
                   {service.icon}
                 </motion.div>
-                <h1 className="text-4xl md:text-6xl font-bold leading-[1.1] text-white mb-8 tracking-tight">
-                  {service.title}
+                <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-[1.1] text-white mb-8 tracking-tight break-words">
+                  <TiltHeading>
+                    <FloatingText depth={20}>{service.title}</FloatingText>
+                  </TiltHeading>
                 </h1>
                 <p className="text-xl text-gray-400 leading-relaxed font-serif mb-8 border-l-4 border-yellow-500 pl-6">
                   {service.desc}
                 </p>
                 <div className="flex flex-wrap gap-4 mt-4">
+                  <div className="w-full flex items-center gap-2 text-yellow-500 mb-6 bg-yellow-500/5 border border-yellow-500/10 p-4 rounded-xl">
+                    <Coins className="w-5 h-5" />
+                    <span className="text-sm font-bold uppercase tracking-widest font-black">Investment Protocol: Starting at {service.priceRange}</span>
+                  </div>
                   <Link to={`/strategy?service=${service.id}`} className="inline-flex items-center justify-center px-10 py-4 bg-yellow-500 text-black font-bold text-xs tracking-[0.2em] uppercase rounded-full hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.2)] gap-3 group">
                     Begin Strategy Protocol
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

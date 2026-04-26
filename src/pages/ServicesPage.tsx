@@ -22,9 +22,9 @@ export function ServicesPage() {
             <span className="flex h-2 w-2 rounded-full bg-yellow-500" />
             <span className="text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Our Capabilities</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold leading-[0.9] text-white mb-8 tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-[1.1] md:leading-[0.9] text-white mb-8 tracking-tight break-words">
             Precision Engines for <br className="hidden md:block"/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-200 to-white">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-200 to-white block sm:inline">
               Unrivaled Growth.
             </span>
           </h1>

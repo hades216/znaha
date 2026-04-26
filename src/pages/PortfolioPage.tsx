@@ -138,7 +138,7 @@ export function PortfolioPage() {
                 <Target className="w-4 h-4" />
                 Case Study Archives
               </div>
-              <h1 className="text-6xl md:text-8xl font-bold leading-[0.85] text-white tracking-tighter mb-8">
+              <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold leading-[1.1] md:leading-[0.85] text-white tracking-tighter mb-8 break-words">
                 Proven <span className="text-yellow-500">Revenue</span> <br />Architecture.
               </h1>
               <p className="text-xl text-gray-400 font-serif leading-relaxed max-w-2xl">
@@ -169,13 +169,20 @@ export function PortfolioPage() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 border ${
-                activeCategory === cat 
-                ? 'bg-yellow-500 text-black border-yellow-500 shadow-[0_0_20px_rgba(234,179,8,0.3)]' 
-                : 'bg-white/5 text-gray-400 border-white/10 hover:border-yellow-500/50 hover:text-white'
-              }`}
+              className="relative px-6 py-2 group outline-none"
             >
-              {cat}
+              {activeCategory === cat && (
+                <motion.div
+                  layoutId="activeFilter"
+                  className="absolute inset-0 bg-yellow-500 rounded-full shadow-[0_0_20px_rgba(234,179,8,0.3)]"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+              <span className={`relative z-10 text-xs font-bold uppercase tracking-widest transition-colors duration-300 ${
+                activeCategory === cat ? 'text-black' : 'text-gray-400 group-hover:text-white'
+              }`}>
+                {cat}
+              </span>
             </button>
           ))}
         </div>
@@ -184,15 +191,19 @@ export function PortfolioPage() {
       {/* Project Matrix */}
       <section className="px-6 md:px-12 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, i) => (
+          <AnimatePresence mode="popLayout" initial={false}>
+            {filteredProjects.map((project) => (
               <motion.div
                 layout
                 key={project.id}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95, transition: { duration: 0.2 } }}
+                transition={{ 
+                  duration: 0.6, 
+                  ease: [0.33, 1, 0.68, 1],
+                  layout: { duration: 0.6, ease: [0.33, 1, 0.68, 1] }
+                }}
                 className={`group relative flex flex-col ${project.featured ? 'lg:col-span-2' : ''}`}
               >
                 {/* Image & Hover Layer */}
@@ -270,7 +281,7 @@ export function PortfolioPage() {
             variants={fadeIn}
           >
             <Zap className="w-12 h-12 text-yellow-500 mx-auto mb-8" />
-            <h2 className="text-5xl md:text-7xl font-bold mb-10 tracking-tighter">Your brand <br /> is next.</h2>
+            <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-10 tracking-tighter break-words">Your brand <br /> is next.</h2>
             <p className="text-xl text-gray-400 font-serif mb-12 leading-relaxed max-w-2xl mx-auto">
               We only accept 2 brand partners per quarter to ensure uncompromising delivery of these results. Secure your strategy consultation now.
             </p>

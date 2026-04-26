@@ -57,7 +57,7 @@ export function AdminDashboard() {
               <Activity className="w-4 h-4" />
               Intelligence Dashboard
             </div>
-            <h1 className="text-4xl font-bold tracking-tight">Revenue Operations <span className="text-yellow-500">Center.</span></h1>
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight break-words">Revenue Operations <span className="text-yellow-500">Center.</span></h1>
           </motion.div>
           
           <div className="flex gap-4">

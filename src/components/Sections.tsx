@@ -4,6 +4,8 @@ import { ArrowRight, BarChart3, Target, Zap, Globe, MessageSquare, TrendingUp, C
 import { Link } from 'react-router-dom';
 import { articles } from '../data/articles';
 import { navigationData } from '../data/navigation';
+import { servicesData } from '../data/services';
+import { FloatingText, TiltHeading } from './FloatingText';
 
 const fadeIn: any = {
   hidden: { opacity: 0, y: 40 },
@@ -25,19 +27,20 @@ export function Hero() {
           </div>
         </motion.div>
 
-        <motion.h1 
-          className="text-5xl md:text-7xl lg:text-7xl font-bold leading-[0.9] text-white mb-6 tracking-tight cursor-default"
-          initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.1 }}
-          whileHover={{ scale: 1.02 }}
-        >
-          We Engineer <br className="hidden md:block"/>
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-200 to-white">
-            Digital Dominance.
-          </span>
-        </motion.h1>
+        <TiltHeading>
+          <motion.h1 
+            className="text-4xl sm:text-6xl md:text-7xl lg:text-7xl font-bold leading-[1.1] md:leading-[0.9] text-white mb-6 tracking-tight cursor-default break-words hyphens-auto"
+            initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.1 }}
+          >
+            <FloatingText depth={15} className="block">We Engineer</FloatingText>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-200 to-white block">
+              Digital Dominance.
+            </span>
+          </motion.h1>
+        </TiltHeading>
 
         <motion.p 
-          className="text-lg text-gray-400 max-w-lg mx-auto mb-10 leading-relaxed font-sans"
+          className="text-base md:text-lg text-gray-400 max-w-lg mx-auto mb-10 leading-relaxed font-sans"
           initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.2 }}
         >
           zanhadigital is a full-service luxury marketing agency driving measurable ROI through data-driven SEO, immersive design, and high-converting campaigns.
@@ -47,10 +50,10 @@ export function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-6"
           initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.3 }}
         >
-          <a href="/strategy" className="w-full sm:w-auto px-8 py-4 bg-yellow-500 text-black font-bold rounded-full hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.3)] flex items-center justify-center gap-2">
+          <Link to="/strategy" className="w-full sm:w-auto px-8 py-4 bg-yellow-500 text-black font-bold rounded-full hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.3)] flex items-center justify-center gap-2">
             Get a Custom Proposal
             <ArrowRight className="w-5 h-5" />
-          </a>
+          </Link>
           
           <div className="flex items-center gap-4 text-left">
             <div className="flex -space-x-3">
@@ -67,20 +70,22 @@ export function Hero() {
 
         {/* WebFX style stats bar */}
         <motion.div 
-          className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 border-t border-white/10 pt-8"
-          initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.5 }}
+          className="mt-24"
+          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
         >
-          {[
-            { value: "80k+", label: "Client Revenue Generated" },
-            { value: "10k+", label: "Leads Driven" },
-            { value: "200+", label: "Luxury Brands Scaled" },
-            { value: "93%", label: "Client Retention Rate" },
-          ].map((stat, i) => (
-            <div key={i} className="text-center">
-              <div className="text-3xl md:text-4xl font-serif font-bold text-yellow-500 mb-2">{stat.value}</div>
-              <div className="text-xs uppercase tracking-widest text-gray-500">{stat.label}</div>
-            </div>
-          ))}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 border-t border-white/10 pt-8">
+            {[
+              { value: "80k+", label: "Client Revenue Generated" },
+              { value: "10k+", label: "Leads Driven" },
+              { value: "200+", label: "Luxury Brands Scaled" },
+              { value: "93%", label: "Client Retention Rate" },
+            ].map((stat, i) => (
+              <motion.div key={i} variants={fadeIn} className="text-center">
+                <div className="text-3xl md:text-4xl font-serif font-bold text-yellow-500 mb-2">{stat.value}</div>
+                <div className="text-xs uppercase tracking-widest text-gray-500">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
 
         {/* Social Proof Section - Marquee Layout */}
@@ -151,47 +156,44 @@ export function CertificationsBanner() {
 
 
 export function Services() {
-  const services = [
-    { icon: <Target className="w-6 h-6 text-yellow-500"/>, title: "SEO Optimization", desc: "Dominate search results with our technical and content-led SEO strategies designed for high-intent luxury buyers." },
-    { icon: <Zap className="w-6 h-6 text-yellow-500"/>, title: "Performance PPC", desc: "Maximize ROI with hyper-targeted paid campaigns across Google Ads, Bing, and premium ad networks." },
-    { icon: <Globe className="w-6 h-6 text-yellow-500"/>, title: "Web Design & Dev", desc: "Immersive, high-performance websites that serve as the luxurious digital storefront for your brand." },
-    { icon: <MessageSquare className="w-6 h-6 text-yellow-500"/>, title: "Social Media Styling", desc: "Curated social presences that build brand equity and engage affluent demographics." },
-    { icon: <TrendingUp className="w-6 h-6 text-yellow-500"/>, title: "Conversion Rate Opt", desc: "Data-backed testing to turn more of your hard-earned traffic into high-value leads and sales." },
-    { icon: <BarChart3 className="w-6 h-6 text-yellow-500"/>, title: "Advanced Analytics", desc: "Closed-loop reporting and marketing automation to track every dollar of ROI down to the cent." },
-  ];
+  const displayServices = servicesData.slice(0, 6);
 
   return (
-    <section id="services" className="py-32 relative z-10">
+    <section id="services" className="py-24 md:py-32 relative z-10 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <motion.div 
-          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={fadeIn}
-          className="text-center max-w-3xl mx-auto mb-20"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={fadeIn}
+          className="text-center max-w-3xl mx-auto mb-20 px-4"
         >
-          <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">Pinnacle Marketing Capabilities.</h2>
-          <p className="text-gray-400 text-lg">We don't just sell services; we implement revenue-generating growth engines customized for elite brands.</p>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-6 break-words">Pinnacle Marketing Capabilities.</h2>
+          <p className="text-gray-400 text-base md:text-lg">We don't just sell services; we implement revenue-generating growth engines customized for elite brands.</p>
         </motion.div>
 
-        <motion.div 
-          initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={stagger}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-        >
-          {services.map((service, i) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {displayServices.map((service, i) => (
             <motion.div 
-              key={i} variants={fadeIn}
+              key={service.id}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1, duration: 0.6 }}
               className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-yellow-500/30 transition-all group relative overflow-hidden flex flex-col"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl -mr-10 -mt-10 transition-transform group-hover:scale-150" />
               <div className="mb-6 inline-flex p-4 rounded-xl bg-black/50 border border-white/5 self-start transform transition-all duration-500 group-hover:scale-110 group-hover:-rotate-6 group-hover:shadow-[0_0_20px_rgba(234,179,8,0.2)]">
                 {service.icon}
               </div>
-              <h3 className="text-lg font-semibold mb-3">{service.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-6">{service.desc}</p>
-              <a href="/services" className="inline-flex items-center text-[10px] uppercase font-bold text-yellow-500 hover:text-yellow-400 transition-colors mt-auto group-hover:translate-x-1 duration-300">
+              <h3 className="text-lg font-semibold mb-3 break-words">{service.title}</h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3">{service.shortDesc || service.desc}</p>
+              <Link to={`/services/${service.id}`} className="inline-flex items-center text-[10px] uppercase font-bold text-yellow-500 hover:text-yellow-400 transition-colors mt-auto group-hover:translate-x-1 duration-300">
                 Explore Service <ChevronRight className="w-4 h-4 ml-1" />
-              </a>
+              </Link>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -208,17 +210,26 @@ export function Portfolio() {
   return (
     <section id="portfolio" className="py-32 relative z-10 bg-black/40 border-y border-white/5">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="max-w-2xl">
-            <div className="flex items-center gap-3 text-yellow-500 mb-6 uppercase tracking-[0.3em] font-bold text-[10px]">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-20 gap-8 text-center md:text-left font-sans">
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-2xl w-full"
+          >
+            <div className="flex items-center justify-center md:justify-start gap-3 text-yellow-500 mb-6 uppercase tracking-[0.3em] font-bold text-[10px]">
               <Target className="w-4 h-4" />
               Strategic Victories
             </div>
-            <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tighter">Our Legacy of <span className="text-yellow-500">Success.</span></h2>
-            <p className="text-gray-400 text-lg font-serif">Case studies detailing how we transform digital presence into measurable equity and revenue growth.</p>
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 tracking-tighter break-words overflow-hidden">Our Legacy of <span className="text-yellow-500">Success.</span></h2>
+            <p className="text-gray-400 text-sm md:text-lg font-serif">Case studies detailing how we transform digital presence into measurable equity and revenue growth.</p>
           </motion.div>
           <motion.div 
-            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
             className="shrink-0"
           >
             <Link 
@@ -316,7 +327,13 @@ export function Blog() {
   return (
     <section id="blog" className="py-32 relative z-10 bg-black/40 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} className="text-center mb-16 max-w-3xl mx-auto">
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16 max-w-3xl mx-auto"
+        >
           <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6">Industry Intelligence.</h2>
           <p className="text-gray-400 text-lg">Curated insights and strategic blueprints from our marketing engineers.</p>
         </motion.div>
@@ -407,16 +424,21 @@ export function HomeContact() {
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
-          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
+          <motion.div 
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-500/10 border border-yellow-500/20 rounded-full w-fit mb-6">
               <span className="flex h-2 w-2 rounded-full bg-yellow-500 animate-pulse" />
               <span className="text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Immediate Impact</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 text-white leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-6 text-white leading-tight">
               Ready to architect <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-200 to-white">your market takeover?</span>
             </h2>
-            <p className="text-gray-400 text-lg leading-relaxed mb-8 max-w-md">
+            <p className="text-gray-400 text-lg leading-relaxed mb-8 max-w-md font-sans">
               Skip the queue. Drop your details below and a senior growth engineer will reach out within 2 hours to discuss your precise acquisition goals.
             </p>
             <div className="flex items-center gap-6">
@@ -530,11 +552,15 @@ export function Footer() {
             <div key={key}>
               <h2 className="text-white font-semibold mb-6 uppercase tracking-wider text-sm">{category.title}</h2>
               <ul className="space-y-4">
-                {category.items.map(item => (
-                  <li key={item.id}>
-                    <Link to={`/${item.id}`} className="text-gray-400 hover:text-yellow-500 text-sm transition-colors">{item.name}</Link>
-                  </li>
-                ))}
+                {category.items.map(item => {
+                  const isDetailedService = category.title === "Services";
+                  const route = isDetailedService ? `/services/${item.id}` : `/${item.id}`;
+                  return (
+                    <li key={item.id}>
+                      <Link to={route} className="text-gray-400 hover:text-yellow-500 text-sm transition-colors">{item.name}</Link>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           ))}

@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { navigationData } from '../data/navigation';
+import { servicesData } from '../data/services';
 import { motion, AnimatePresence } from 'motion/react';
 import { PageTransition } from '../components/PageTransition';
-import { ArrowRight, ChevronRight, CheckCircle2, Plus, Minus } from 'lucide-react';
+import { FloatingText, TiltHeading } from '../components/FloatingText';
+import { ArrowRight, ChevronRight, CheckCircle2, Plus, Minus, Coins } from 'lucide-react';
 
 export function GenericPage() {
   const { pageId } = useParams();
@@ -12,6 +14,10 @@ export function GenericPage() {
   // Flatten navigation data to find the item
   const allItems = Object.values(navigationData).flatMap(cat => cat.items);
   const item = allItems.find(i => i.id === pageId);
+
+  // Try to find matching service for pricing
+  const matchingService = servicesData.find(s => s.id === pageId || s.id === pageId?.replace('knowledge-', ''));
+  const price = matchingService?.priceRange || "$2,000+ per month";
 
   if (!item) {
     return (
@@ -67,9 +73,11 @@ export function GenericPage() {
               <span className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse" />
               {categoryName} / {item.name}
             </div>
-            <h1 className="text-5xl md:text-7xl font-sans font-black text-white mb-8 tracking-tighter leading-[1.1]">
-              Elevating <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-200">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-sans font-black text-white mb-8 tracking-tighter leading-[1.1] break-words">
+              <TiltHeading>
+                <FloatingText depth={20} className="block">Elevating</FloatingText>
+              </TiltHeading>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-200 block">
                 {item.name}
               </span>
             </h1>
@@ -120,9 +128,9 @@ export function GenericPage() {
                         onClick={() => setOpenFaqIndex(openFaqIndex === i ? null : i)}
                         aria-expanded={openFaqIndex === i}
                         aria-controls={`faq-generic-${i}`}
-                        className="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-yellow-500/50"
+                        className="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-yellow-500/50 gap-4"
                       >
-                        <span className="font-semibold text-white text-lg">{faq.question}</span>
+                        <span className="font-semibold text-white text-base sm:text-lg break-words flex-1 leading-tight">{faq.question}</span>
                         {openFaqIndex === i ? (
                           <Minus className="w-5 h-5 text-yellow-500 shrink-0" />
                         ) : (
@@ -154,7 +162,24 @@ export function GenericPage() {
             <div className="md:col-span-4">
               <motion.div 
                 initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
-                className="sticky top-32 p-8 rounded-3xl bg-[#0a0a0a] border border-white/10 shadow-2xl"
+                className="sticky top-32 p-8 rounded-3xl bg-[#0a0a0a] border border-white/10 shadow-2xl mb-8"
+              >
+                <div className="w-12 h-12 bg-yellow-500/10 rounded-full flex items-center justify-center mb-6">
+                  <Coins className="w-6 h-6 text-yellow-500" />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-2">Investment Spec</h3>
+                <p className="text-sm text-gray-500 mb-6 uppercase tracking-widest font-black">Starting at {price}</p>
+                <p className="text-gray-400 text-sm mb-8 leading-relaxed">
+                  Precision-engineered rate cards designed for ROI alignment. Scalable protocol based on market density.
+                </p>
+                <Link to="/strategy" className="flex items-center justify-center gap-2 w-full py-4 bg-yellow-500 text-black font-bold uppercase tracking-widest text-xs rounded-full hover:bg-yellow-400 transition-colors">
+                  Get Precise Quote <ArrowRight className="w-4 h-4" />
+                </Link>
+              </motion.div>
+
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+                className="sticky top-[32rem] p-8 rounded-3xl bg-[#0a0a0a]/50 border border-white/10 backdrop-blur-sm"
               >
                 <div className="w-12 h-12 bg-yellow-500/10 rounded-full flex items-center justify-center mb-6">
                   <div className="w-6 h-6 bg-yellow-500 rounded-full animate-pulse" />
@@ -170,12 +195,16 @@ export function GenericPage() {
                 <div className="mt-8 pt-8 border-t border-white/10">
                   <p className="text-[10px] uppercase tracking-widest text-gray-500 mb-4 font-bold">Related {categoryName}</p>
                   <div className="flex flex-col gap-3">
-                    {Object.values(navigationData).find(c => c.title === categoryName)?.items.filter(i => i.id !== item.id).slice(0, 4).map(related => (
-                      <Link key={related.id} to={`/${related.id}`} className="text-sm text-gray-400 hover:text-yellow-500 flex items-center justify-between group">
-                        {related.name}
-                        <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      </Link>
-                    ))}
+                    {Object.values(navigationData).find(c => c.title === categoryName)?.items.filter(i => i.id !== item.id).slice(0, 4).map(related => {
+                      const isDetailedService = categoryName === "Services";
+                      const route = isDetailedService ? `/services/${related.id}` : `/${related.id}`;
+                      return (
+                        <Link key={related.id} to={route} className="text-sm text-gray-400 hover:text-yellow-500 flex items-center justify-between group">
+                          {related.name}
+                          <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               </motion.div>

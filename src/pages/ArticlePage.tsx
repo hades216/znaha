@@ -36,7 +36,7 @@ export function ArticlePage() {
             </span>
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-bold leading-[1.1] text-white mb-8 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-[1.1] text-white mb-8 tracking-tight break-words hyphens-auto">
             {article.title}
           </h1>
 
