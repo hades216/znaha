@@ -27,7 +27,9 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply tracking-tighter break-words hyphens-auto;
+    @apply tracking-tighter break-words;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 }
 

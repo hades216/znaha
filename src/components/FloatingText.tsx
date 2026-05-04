@@ -15,18 +15,17 @@ export function FloatingText({ children, className = "", depth = 50, direction =
     offset: ["start end", "end start"]
   });
 
-  const getTransform = () => {
-    switch (direction) {
-      case 'up': return useTransform(scrollYProgress, [0, 1], [depth, -depth]);
-      case 'down': return useTransform(scrollYProgress, [0, 1], [-depth, depth]);
-      case 'left': return useTransform(scrollYProgress, [0, 1], [depth, -depth]);
-      case 'right': return useTransform(scrollYProgress, [0, 1], [-depth, depth]);
-      default: return useTransform(scrollYProgress, [0, 1], [depth, -depth]);
-    }
-  };
-
+  let outputRange;
+  switch (direction) {
+    case 'up': outputRange = [depth, -depth]; break;
+    case 'down': outputRange = [-depth, depth]; break;
+    case 'left': outputRange = [depth, -depth]; break;
+    case 'right': outputRange = [-depth, depth]; break;
+    default: outputRange = [depth, -depth]; break;
+  }
+  
+  const translate = useTransform(scrollYProgress, [0, 1], outputRange);
   const axis = (direction === 'up' || direction === 'down') ? 'y' : 'x';
-  const translate = getTransform();
 
   return (
     <motion.div

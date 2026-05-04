@@ -41,23 +41,29 @@ export function ServicesPage() {
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {servicesData.map((service, i) => (
-            <motion.div 
-              key={i} variants={fadeIn}
-              className="p-6 md:p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-yellow-500/30 transition-all group relative overflow-hidden flex flex-col min-h-[360px]"
+            <Link 
+              key={service.id}
+              to={`/services/${service.id}`} 
+              className="p-6 md:p-8 rounded-2xl bg-white/5 border border-white/10 hover:border-yellow-500/30 transition-all group relative overflow-hidden flex outline-none focus-visible:ring-2 focus-visible:ring-yellow-500"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl -mr-10 -mt-10 transition-transform group-hover:scale-150" />
-              
-              <div className="mb-8 inline-flex p-4 rounded-xl bg-black/50 border border-white/5 self-start transform transition-all duration-500 group-hover:scale-110 group-hover:-rotate-6 group-hover:shadow-[0_0_20px_rgba(234,179,8,0.2)]">
-                {service.icon}
-              </div>
-              
-              <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-8 flex-1">{service.shortDesc}</p>
-              
-              <Link to={`/services/${service.id}`} className="inline-flex items-center text-[11px] uppercase font-bold text-yellow-500 hover:text-yellow-400 transition-colors mt-auto group-hover:translate-x-1 duration-300">
-                Explore Full Protocol <ChevronRight className="w-4 h-4 ml-1" />
-              </Link>
-            </motion.div>
+              <motion.div 
+                variants={fadeIn}
+                className="flex flex-col min-h-[360px] w-full"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl -mr-10 -mt-10 transition-transform group-hover:scale-150" />
+                
+                <div className="mb-8 inline-flex p-4 rounded-xl bg-black/50 border border-white/5 self-start transform transition-all duration-500 group-hover:scale-110 group-hover:-rotate-6 group-hover:shadow-[0_0_20px_rgba(234,179,8,0.2)]">
+                  {service.icon}
+                </div>
+                
+                <h3 className="text-xl font-bold mb-3 group-hover:text-yellow-500 transition-colors">{service.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-8 flex-1">{service.shortDesc}</p>
+                
+                <div className="inline-flex items-center text-[11px] uppercase font-bold text-yellow-500 hover:text-yellow-400 transition-colors mt-auto group-hover:translate-x-1 duration-300">
+                  Explore Full Protocol <ChevronRight className="w-4 h-4 ml-1" />
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </motion.div>
       </section>

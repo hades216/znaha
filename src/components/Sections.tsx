@@ -18,8 +18,8 @@ const stagger: any = {
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-28 pb-20 justify-center z-10 px-6 overflow-hidden">
-      <div className="max-w-5xl mx-auto text-center">
+    <section className="relative min-h-screen flex flex-col items-center pt-28 pb-20 justify-center z-10 px-6 overflow-hidden">
+      <div className="w-full max-w-5xl mx-auto text-center">
         <motion.div initial="hidden" animate="visible" variants={fadeIn}>
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-500/10 border border-yellow-500/20 rounded-full w-fit mb-6">
             <span className="flex h-2 w-2 rounded-full bg-yellow-500 animate-pulse" />
@@ -29,7 +29,7 @@ export function Hero() {
 
         <TiltHeading>
           <motion.h1 
-            className="text-4xl sm:text-6xl md:text-7xl lg:text-7xl font-bold leading-[1.1] md:leading-[0.9] text-white mb-6 tracking-tight cursor-default break-words hyphens-auto"
+            className="text-3xl sm:text-5xl md:text-7xl lg:text-7xl font-bold leading-[1.2] md:leading-[0.9] text-white mb-6 tracking-tight cursor-default break-words"
             initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.1 }}
           >
             <FloatingText depth={15} className="block">We Engineer</FloatingText>
@@ -50,7 +50,7 @@ export function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-6"
           initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.3 }}
         >
-          <Link to="/strategy" className="w-full sm:w-auto px-8 py-4 bg-yellow-500 text-black font-bold rounded-full hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.3)] flex items-center justify-center gap-2">
+          <Link to="/strategy" className="inline-flex px-8 py-4 bg-yellow-500 text-black font-bold rounded-full hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.3)] items-center justify-center gap-2">
             Get a Custom Proposal
             <ArrowRight className="w-5 h-5" />
           </Link>
@@ -174,24 +174,29 @@ export function Services() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {displayServices.map((service, i) => (
-            <motion.div 
+            <Link 
+              to={`/services/${service.id}`}
               key={service.id}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.6 }}
-              className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-yellow-500/30 transition-all group relative overflow-hidden flex flex-col"
+              className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-yellow-500/30 transition-all group relative overflow-hidden flex flex-col cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-yellow-500"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl -mr-10 -mt-10 transition-transform group-hover:scale-150" />
-              <div className="mb-6 inline-flex p-4 rounded-xl bg-black/50 border border-white/5 self-start transform transition-all duration-500 group-hover:scale-110 group-hover:-rotate-6 group-hover:shadow-[0_0_20px_rgba(234,179,8,0.2)]">
-                {service.icon}
-              </div>
-              <h3 className="text-lg font-semibold mb-3 break-words">{service.title}</h3>
-              <p className="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3">{service.shortDesc || service.desc}</p>
-              <Link to={`/services/${service.id}`} className="inline-flex items-center text-[10px] uppercase font-bold text-yellow-500 hover:text-yellow-400 transition-colors mt-auto group-hover:translate-x-1 duration-300">
-                Explore Service <ChevronRight className="w-4 h-4 ml-1" />
-              </Link>
-            </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1, duration: 0.6 }}
+                className="flex flex-col h-full"
+              >
+                <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl -mr-10 -mt-10 transition-transform group-hover:scale-150" />
+                <div className="mb-6 inline-flex p-4 rounded-xl bg-black/50 border border-white/5 self-start transform transition-all duration-500 group-hover:scale-110 group-hover:-rotate-6 group-hover:shadow-[0_0_20px_rgba(234,179,8,0.2)]">
+                  {service.icon}
+                </div>
+                <h3 className="text-lg font-semibold mb-3 break-words text-white group-hover:text-yellow-500 transition-colors">{service.title}</h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3">{service.shortDesc || service.desc}</p>
+                <div className="inline-flex items-center text-[10px] uppercase font-bold text-yellow-500 hover:text-yellow-400 transition-colors mt-auto group-hover:translate-x-1 duration-300">
+                  Explore Service <ChevronRight className="w-4 h-4 ml-1" />
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
@@ -412,7 +417,7 @@ export function HomeContact() {
   };
 
   const getInputClass = (name: string) => {
-    return `w-full bg-black/40 border rounded-xl px-4 py-3 placeholder-white/20 text-white focus:outline-none transition-all ${
+    return `w-full bg-black/40 border rounded-full px-6 py-4 placeholder-white/20 text-white focus:outline-none transition-all ${
       errors[name] 
         ? 'border-red-500/50 shadow-[0_0_10px_rgba(239,68,68,0.1)]' 
         : 'border-white/10 focus:border-yellow-500/50'
@@ -515,7 +520,7 @@ export function HomeContact() {
                       name="goal"
                       value={formData.goal}
                       onChange={handleInputChange}
-                      className={getInputClass('goal')} 
+                      className={`${getInputClass('goal')} rounded-3xl`} 
                       placeholder="What is the main bottleneck you need solved?" 
                     />
                     {errors.goal && <span className="text-red-500 text-[10px] uppercase font-bold tracking-widest">{errors.goal}</span>}
