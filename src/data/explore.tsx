@@ -4,7 +4,7 @@ import { TrendingUp, BarChart, Server, Zap, Search, Target, BookOpen } from 'luc
 export const exploreData = {
   'explore-trends': {
     title: 'Digital Marketing Trends',
-    icon: <TrendingUp className="w-8 h-8 text-yellow-500" />,
+    icon: <TrendingUp className="w-8 h-8 text-blue-500" />,
     intro: 'Stay ahead of the curve. The luxury digital landscape moves fast, and resting on past success is a guaranteed path to obsolescence.',
     sections: [
       {
@@ -19,7 +19,7 @@ export const exploreData = {
   },
   'explore-geo': {
     title: 'Generative Engine Optimization',
-    icon: <Zap className="w-8 h-8 text-yellow-500" />,
+    icon: <Zap className="w-8 h-8 text-blue-500" />,
     intro: 'Traditional SEO optimized for crawling bots. GEO optimizes for Generative AI engines like ChatGPT, Gemini, and Google SGE.',
     sections: [
       {
@@ -34,7 +34,7 @@ export const exploreData = {
   },
   'explore-status': {
     title: 'HTTP Status Codes',
-    icon: <Server className="w-8 h-8 text-yellow-500" />,
+    icon: <Server className="w-8 h-8 text-blue-500" />,
     intro: 'Technical SEO begins at the server level. Ignoring standard HTTP status codes can bleed your crawl budget and devastate your organic visibility.',
     sections: [
       {
@@ -49,7 +49,7 @@ export const exploreData = {
   },
   'explore-seo-digital': {
     title: 'SEO in Digital Marketing',
-    icon: <Search className="w-8 h-8 text-yellow-500" />,
+    icon: <Search className="w-8 h-8 text-blue-500" />,
     intro: 'SEO is not an isolated tactic; it is the foundational infrastructure of a comprehensive digital marketing ecosystem.',
     sections: [
       {
@@ -64,7 +64,7 @@ export const exploreData = {
   },
   'explore-seo-sem': {
     title: 'SEO vs. SEM',
-    icon: <Target className="w-8 h-8 text-yellow-500" />,
+    icon: <Target className="w-8 h-8 text-blue-500" />,
     intro: 'The battle for the SERP. Understanding when to buy visibility and when to build it.',
     sections: [
       {
@@ -79,7 +79,7 @@ export const exploreData = {
   },
   'explore-roas': {
     title: 'Return on Ad Spend',
-    icon: <BarChart className="w-8 h-8 text-yellow-500" />,
+    icon: <BarChart className="w-8 h-8 text-blue-500" />,
     intro: 'ROAS is the ultimate arbiter of truth in digital advertising. If it does not drive profitable revenue, it is cut.',
     sections: [
       {
@@ -94,7 +94,7 @@ export const exploreData = {
   },
   'explore-playbook': {
     title: 'Revenue Marketing Playbook',
-    icon: <BookOpen className="w-8 h-8 text-yellow-500" />,
+    icon: <BookOpen className="w-8 h-8 text-blue-500" />,
     intro: 'The definitive framework for aligning sales and marketing toward a singular goal: explosive top-line growth.',
     sections: [
       {

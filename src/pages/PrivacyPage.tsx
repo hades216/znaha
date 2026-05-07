@@ -9,22 +9,22 @@ const fadeIn: any = {
 export function PrivacyPage() {
   const sections = [
     {
-      icon: <Eye className="w-6 h-6 text-yellow-500" />,
+      icon: <Eye className="w-6 h-6 text-blue-500" />,
       title: "Data Collection",
       content: "We collect only what is necessary to optimize your brand's growth journey. This includes engagement metrics, interaction patterns, and voluntarily provided strategic details."
     },
     {
-      icon: <Lock className="w-6 h-6 text-yellow-500" />,
+      icon: <Lock className="w-6 h-6 text-blue-500" />,
       title: "Elite Security",
       content: "Your intellectual property and campaign data are protected by industry-standard encryption protocols. We maintain strict compartmentalization of client information."
     },
     {
-      icon: <Shield className="w-6 h-6 text-yellow-500" />,
+      icon: <Shield className="w-6 h-6 text-blue-500" />,
       title: "GDPR Compliance",
       content: "We fully respect your rights under GDPR. You have the right to access, rectify, or erase your data from our systems at any moment."
     },
     {
-      icon: <Clock className="w-6 h-6 text-yellow-500" />,
+      icon: <Clock className="w-6 h-6 text-blue-500" />,
       title: "Retention Policy",
       content: "Data is retained only as long as required to fulfill our consulting obligations or until you request its removal from the ZNAHA ecosystem."
     }
@@ -34,15 +34,15 @@ export function PrivacyPage() {
     <main className="pt-32 pb-20 relative z-10 min-h-screen">
       <section className="max-w-4xl mx-auto px-6 md:px-12 py-20">
         <motion.div initial="hidden" animate="visible" variants={fadeIn}>
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-500/10 border border-yellow-500/20 rounded-full w-fit mb-6">
-            <Shield className="w-4 h-4 text-yellow-500" />
-            <span className="text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Protocol</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full w-fit mb-6">
+            <Shield className="w-4 h-4 text-blue-500" />
+            <span className="text-[10px] font-bold text-blue-500 uppercase tracking-widest">Protocol</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-bold leading-[1.1] text-white mb-8 tracking-tight">
             Privacy Policy & <br />
-            <span className="text-yellow-500">Data Architecture.</span>
+            <span className="text-blue-500">Data Architecture.</span>
           </h1>
-          <p className="text-xl text-gray-400 leading-relaxed font-serif mb-12 border-l-4 border-yellow-500 pl-8">
+          <p className="text-xl text-gray-400 leading-relaxed font-serif mb-12 border-l-4 border-blue-500 pl-8">
             At ZNAHA, privacy is not just a regulatory hurdle—it is a core pillar of our professional integrity. We engineer our tracking systems to be as transparent as they are powerful.
           </p>
         </motion.div>
@@ -70,7 +70,7 @@ export function PrivacyPage() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeIn}
-          className="prose prose-invert prose-yellow max-w-none text-gray-400"
+          className="prose prose-invert prose-blue max-w-none text-gray-400"
         >
           <h2 className="text-white">Detailed Information Handling</h2>
           <p>
@@ -80,7 +80,7 @@ export function PrivacyPage() {
             When you request a strategy or engage with our concierge, your information is processed through our secure Revenue Platform. We do not sell user data to third-party brokers.
           </p>
           <p>
-            For any inquiries regarding your data within the ZNAHA ecosystem, please contact our privacy partners at <span className="text-yellow-500">privacy@znaha.digital</span>.
+            For any inquiries regarding your data within the ZNAHA ecosystem, please contact our privacy partners at <span className="text-blue-500">privacy@znaha.digital</span>.
           </p>
         </motion.div>
       </section>

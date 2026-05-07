@@ -18,13 +18,13 @@ export function BlogIndexPage() {
       {/* Header */}
       <section className="px-6 md:px-12 py-20 text-center max-w-5xl mx-auto">
         <motion.div initial="hidden" animate="visible" variants={fadeIn}>
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-500/10 border border-yellow-500/20 rounded-full w-fit mb-6">
-            <span className="flex h-2 w-2 rounded-full bg-yellow-500" />
-            <span className="text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Thought Leadership</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full w-fit mb-6">
+            <span className="flex h-2 w-2 rounded-full bg-blue-500" />
+            <span className="text-[10px] font-bold text-blue-500 uppercase tracking-widest">Thought Leadership</span>
           </div>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-[1.1] md:leading-[0.9] text-white mb-8 tracking-tight break-words">
             Insights from the <br className="hidden md:block"/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-200 to-white block sm:inline">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-white block sm:inline">
               Absolute Edge.
             </span>
           </h1>
@@ -53,7 +53,7 @@ export function BlogIndexPage() {
                       className="w-full h-full object-cover transform duration-700 group-hover:scale-105 opacity-80 group-hover:opacity-100"
                     />
                     <div className="absolute top-4 left-4">
-                      <span className="text-xs font-bold uppercase tracking-widest bg-black/60 backdrop-blur-md text-white px-3 py-1.5 rounded-full border border-white/10">{article.category}</span>
+                      <span className="text-xs font-bold uppercase tracking-widest bg-[#18191A]/60 backdrop-blur-md text-white px-3 py-1.5 rounded-full border border-white/10">{article.category}</span>
                     </div>
                  </div>
               </Link>
@@ -61,16 +61,16 @@ export function BlogIndexPage() {
               <div className="flex-1 flex flex-col">
                 <div className="flex items-center gap-6 mb-4 text-sm font-semibold text-gray-500">
                   <div className="flex items-center gap-2">
-                    <Calendar className="w-4 h-4 text-yellow-500" />
+                    <Calendar className="w-4 h-4 text-blue-500" />
                     {article.date}
                   </div>
                   <div className="flex items-center gap-2">
-                    <User className="w-4 h-4 text-yellow-500" />
+                    <User className="w-4 h-4 text-blue-500" />
                     {article.author}
                   </div>
                 </div>
                 
-                <h3 className="text-2xl lg:text-3xl font-bold mb-4 group-hover:text-yellow-500 transition-colors line-clamp-2">
+                <h3 className="text-2xl lg:text-3xl font-bold mb-4 group-hover:text-blue-500 transition-colors line-clamp-2">
                   <Link to={`/insights/${article.slug}`}>{article.title}</Link>
                 </h3>
                 
@@ -78,7 +78,7 @@ export function BlogIndexPage() {
                   {article.excerpt}
                 </p>
                 
-                <Link to={`/insights/${article.slug}`} className="inline-flex items-center text-sm font-bold text-yellow-500 hover:text-yellow-400 transition-colors uppercase tracking-wider mt-auto group-hover:translate-x-1 duration-300">
+                <Link to={`/insights/${article.slug}`} className="inline-flex items-center text-sm font-bold text-blue-500 hover:text-blue-400 transition-colors uppercase tracking-wider mt-auto group-hover:translate-x-1 duration-300">
                   Read Protocol <ArrowRight className="w-4 h-4 ml-2" />
                 </Link>
               </div>
@@ -94,7 +94,7 @@ export function BlogIndexPage() {
           <p className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
             Stop relying on generic marketing. Partner with ZNAHA to engineer a bespoke acquisition engine for your brand.
           </p>
-          <Link to="/strategy" className="inline-flex items-center justify-center px-10 py-5 bg-yellow-500 text-black font-bold rounded-full hover:bg-yellow-400 transition-all shadow-[0_0_30px_rgba(234,179,8,0.3)] gap-2 text-lg uppercase tracking-wider">
+          <Link to="/strategy" className="inline-flex items-center justify-center px-10 py-5 bg-blue-500 text-white font-bold rounded-full hover:bg-blue-400 transition-all shadow-[0_0_30px_rgba(59,130,246,0.3)] gap-2 text-lg uppercase tracking-wider">
             GET MY FREE PROPOSAL
             <ArrowRight className="w-5 h-5" />
           </Link>

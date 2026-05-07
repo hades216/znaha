@@ -1,12 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
-  --color-brand-yellow: #EAB308;
-  --color-brand-black: #0A0A0A;
-  --color-brand-white: #FAFAFA;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-serif: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --color-brand-blue: #2D88FF;
+  --color-brand-black: #18191A;
+  --color-brand-white: #E4E6EB;
+  
+  --color-blue-400: #5AA7FF;
+  --color-blue-500: #2D88FF;
+  --color-blue-600: #1877F2;
+
   --animate-marquee: marquee 30s linear infinite;
   
   @keyframes marquee {
@@ -21,23 +26,24 @@
 
 @layer base {
   body {
-    @apply bg-[#050505] text-white overflow-x-hidden antialiased font-sans;
+    @apply bg-[#18191A] text-[#E4E6EB] overflow-x-hidden antialiased font-sans;
     width: 100%;
     position: relative;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply tracking-tighter break-words;
+    @apply tracking-tighter break-words text-[#E4E6EB];
     word-break: break-word;
     overflow-wrap: break-word;
+    letter-spacing: -0.02em;
   }
 }
 
 .glass-panel {
-  background: rgba(10, 10, 10, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(36, 37, 38, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .bg-gradient-radial {

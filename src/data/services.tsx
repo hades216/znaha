@@ -16,7 +16,7 @@ export interface ServiceData {
 export const servicesData: ServiceData[] = [
   {
     id: "seo",
-    icon: <Target className="w-8 h-8 text-yellow-500"/>,
+    icon: <Target className="w-8 h-8 text-blue-500"/>,
     title: "SEO Optimization",
     shortDesc: "Dominate search results with technical and content-led SEO strategies designed for high-intent luxury buyers.",
     desc: "We rebuild your site architecture to appease both algorithms and affluent prospects. Our SEO engineering focuses on capturing zero-click intent, owning rich snippets, and establishing your domain as an unquestionable authority.",
@@ -30,7 +30,7 @@ export const servicesData: ServiceData[] = [
   },
   {
     id: "local-seo",
-    icon: <MapPin className="w-8 h-8 text-yellow-500"/>,
+    icon: <MapPin className="w-8 h-8 text-blue-500"/>,
     title: "Local SEO & Geofencing",
     shortDesc: "Capture foot traffic and local dominance when affluent customers search nearby.",
     desc: "Perfect for premium brick-and-mortar storefronts, luxury real estate, and regional clinics. We optimize your Google Business Profiles and employ geofenced targeting strategies to dominate regional visibility.",
@@ -44,7 +44,7 @@ export const servicesData: ServiceData[] = [
   },
   {
     id: "ppc",
-    icon: <Zap className="w-8 h-8 text-yellow-500"/>,
+    icon: <Zap className="w-8 h-8 text-blue-500"/>,
     title: "Performance PPC",
     shortDesc: "Maximize ROI with hyper-targeted paid campaigns across premium ad networks.",
     desc: "Stop wasting ad spend and start acquiring aggressively. We engineer cross-network paid strategies spanning Google Ads, Bing, and elite publishers, ensuring your luxurious brand is always in front of the right eyes.",
@@ -61,7 +61,7 @@ export const servicesData: ServiceData[] = [
   },
   {
     id: "web-design",
-    icon: <Globe className="w-8 h-8 text-yellow-500"/>,
+    icon: <Globe className="w-8 h-8 text-blue-500"/>,
     title: "Web Design & Development",
     shortDesc: "Immersive, high-performance websites acting as the digital storefront for your brand.",
     desc: "Your website is your ultimate asset. We build bespoke UI/UX experiences, utilizing React and Next.js scale architectures to deliver blistering speed and immersive 3D/WebGL experiences that captivate high-net-worth users.",
@@ -75,7 +75,7 @@ export const servicesData: ServiceData[] = [
   },
   {
     id: "social-media",
-    icon: <MessageSquare className="w-8 h-8 text-yellow-500"/>,
+    icon: <MessageSquare className="w-8 h-8 text-blue-500"/>,
     title: "Social Media & Influencer Styling",
     shortDesc: "Curated presences building brand equity and engaging affluent demographics.",
     desc: "Standard social media doesn't work for luxury. It requires curation. We orchestrate premium content production, influencer brokering, and rigorous community management to defend and elevate your brand's standing on Instagram, TikTok, and LinkedIn.",
@@ -89,7 +89,7 @@ export const servicesData: ServiceData[] = [
   },
   {
     id: "ecommerce",
-    icon: <ShoppingCart className="w-8 h-8 text-yellow-500"/>,
+    icon: <ShoppingCart className="w-8 h-8 text-blue-500"/>,
     title: "E-Commerce Optimization",
     shortDesc: "Maximize revenue per user across global online luxury and retail storefronts.",
     desc: "Every fraction of a second costs dollars. We architect and optimize premium Shopify Plus and headless commerce platforms to remove friction, enhance the luxury cart experience, and maximize Lifetime Value.",
@@ -103,7 +103,7 @@ export const servicesData: ServiceData[] = [
   },
   {
     id: "content-email",
-    icon: <Mail className="w-8 h-8 text-yellow-500"/>,
+    icon: <Mail className="w-8 h-8 text-blue-500"/>,
     title: "Content & Email Marketing",
     shortDesc: "Engage your prospect list with high-value narrative emails and thought leadership.",
     desc: "Your email list is your most valuable owned asset. We craft multi-touch drip campaigns, high-end newsletters, and thought-leadership articles that consistently funnel affluent prospects back into the purchase cycle.",
@@ -117,7 +117,7 @@ export const servicesData: ServiceData[] = [
   },
   {
     id: "amazon",
-    icon: <Store className="w-8 h-8 text-yellow-500"/>,
+    icon: <Store className="w-8 h-8 text-blue-500"/>,
     title: "Amazon Marketing Services",
     shortDesc: "Protect your brand and dominate category sales within the Amazon ecosystem.",
     desc: "Amazon is the ultimate bottom-of-funnel engine. We provide A+ content creation, rigorous brand defense, and advanced Sponsored Advertising campaigns to secure your margin against counterfeiters and competitors.",
@@ -131,7 +131,7 @@ export const servicesData: ServiceData[] = [
   },
   {
     id: "cro",
-    icon: <TrendingUp className="w-8 h-8 text-yellow-500"/>,
+    icon: <TrendingUp className="w-8 h-8 text-blue-500"/>,
     title: "Conversion Rate Optimization (CRO)",
     shortDesc: "Data-backed testing to turn traffic into high-value leads and sales.",
     desc: "Traffic is useless if it leaks out of the funnel. We use heat mapping, session recording, and split-variant testing to systematically eliminate friction points from the buyer's journey.",
@@ -145,7 +145,7 @@ export const servicesData: ServiceData[] = [
   },
   {
     id: "analytics",
-    icon: <BarChart3 className="w-8 h-8 text-yellow-500"/>,
+    icon: <BarChart3 className="w-8 h-8 text-blue-500"/>,
     title: "Advanced Analytics",
     shortDesc: "Closed-loop reporting and marketing automation to track every dollar of ROI.",
     desc: "Know exactly what drives your growth. We build executive dashboards, integrate complex CRM pipelines, and employ advanced attribution modeling so you have absolute lucidity over your marketing data.",
@@ -158,7 +158,7 @@ export const servicesData: ServiceData[] = [
   },
   {
     id: "digital-marketing-revenue",
-    icon: <Rocket className="w-8 h-8 text-yellow-500" />,
+    icon: <Rocket className="w-8 h-8 text-blue-500" />,
     title: "Digital Marketing That Drives Revenue®",
     shortDesc: "The complete, done-for-you digital growth framework that aligns every channel toward scaling top-line revenue.",
     desc: "Our flagship structural framework. We don't just run ads or tweak title tags—we build a bespoke, multi-channel engine incorporating organic, paid, and technical infrastructure to guarantee market dominance.",
@@ -172,7 +172,7 @@ export const servicesData: ServiceData[] = [
   },
   {
     id: "omni-seo",
-    icon: <Search className="w-8 h-8 text-yellow-500" />,
+    icon: <Search className="w-8 h-8 text-blue-500" />,
     title: "OmniSEO® & Lead Generation",
     shortDesc: "An omnipresent approach to search visibility and high-value lead acquisition across all platforms.",
     desc: "Traditional SEO is dead. OmniSEO® ensures your brand dominates every facet of the search landscape, from traditional Google SERPs to AI-overviews and voice search, engineering a predictable inbound lead pipeline.",
@@ -186,7 +186,7 @@ export const servicesData: ServiceData[] = [
   },
   {
     id: "revenue-marketing-cro",
-    icon: <Coins className="w-8 h-8 text-yellow-500" />,
+    icon: <Coins className="w-8 h-8 text-blue-500" />,
     title: "Revenue Marketing & CRO",
     shortDesc: "Shift focus from vanity metrics to absolute revenue generation and conversion optimization.",
     desc: "We align your entire digital footprint with a single goal: closed-won revenue. By combining full-funnel marketing strategies with rigorous Conversion Rate Optimization (CRO), we multiply the value of every visitor.",
@@ -199,7 +199,7 @@ export const servicesData: ServiceData[] = [
   },
   {
     id: "ux-ai-services",
-    icon: <BrainCircuit className="w-8 h-8 text-yellow-500" />,
+    icon: <BrainCircuit className="w-8 h-8 text-blue-500" />,
     title: "UX & AI Services",
     shortDesc: "Bleeding-edge web development powered by artificial intelligence and elite user experience design.",
     desc: "Web development that actually converts. We integrate AI-driven personalization, predictive analytics, and friction-free user experiences (UX) to create websites that act as your best digital sales rep.",
@@ -213,7 +213,7 @@ export const servicesData: ServiceData[] = [
   },
   {
     id: "revenue-platform",
-    icon: <Database className="w-8 h-8 text-yellow-500" />,
+    icon: <Database className="w-8 h-8 text-blue-500" />,
     title: "Revenue Platform",
     shortDesc: "Deploying our proprietary infrastructure to close the loop between marketing and closed-won sales.",
     desc: "Stop guessing which campaigns drive revenue. Our Revenue Platform and analytics infrastructure integrates directly with your CRM to track prospects from the first click to the final contract signature.",

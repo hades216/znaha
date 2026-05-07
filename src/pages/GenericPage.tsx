@@ -29,7 +29,7 @@ export function GenericPage() {
         <div className="pt-40 pb-32 text-center min-h-[70vh] flex flex-col justify-center items-center">
             <h1 className="text-5xl font-black text-white mb-6">404 - Page Not Found</h1>
             <p className="text-gray-400 mb-8 max-w-md mx-auto text-lg">The trajectory you are looking for does not exist in our current protocols.</p>
-            <Link to="/" className="px-8 py-3 bg-yellow-500 text-black font-bold uppercase tracking-widest rounded-full hover:bg-yellow-400 transition-colors">Return to Base</Link>
+            <Link to="/" className="px-8 py-3 bg-blue-500 text-white font-bold uppercase tracking-widest rounded-full hover:bg-blue-400 transition-colors">Return to Base</Link>
         </div>
       </PageTransition>
     );
@@ -73,13 +73,13 @@ export function GenericPage() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl"
           >
-            <div className="flex items-center gap-2 text-yellow-500 mb-6 uppercase tracking-[0.3em] font-bold text-[10px]">
-              <span className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse" />
+            <div className="flex items-center gap-2 text-blue-500 mb-6 uppercase tracking-[0.3em] font-bold text-[10px]">
+              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
               {categoryName} / {item.name}
             </div>
             
             {specificExploreData && (
-              <div className="mb-8 inline-flex p-5 rounded-2xl bg-white/5 border border-white/10 text-yellow-500 shadow-[0_0_30px_rgba(234,179,8,0.1)] w-fit">
+              <div className="mb-8 inline-flex p-5 rounded-2xl bg-white/5 border border-white/10 text-blue-500 shadow-[0_0_30px_rgba(59,130,246,0.1)] w-fit">
                 {specificExploreData.icon}
               </div>
             )}
@@ -88,7 +88,7 @@ export function GenericPage() {
               <TiltHeading>
                 <FloatingText depth={20} className="block">Elevating</FloatingText>
               </TiltHeading>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-200 block">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-blue-200 block">
                 {item.name}
               </span>
             </h1>
@@ -113,8 +113,8 @@ export function GenericPage() {
                     <div className="flex flex-col gap-8">
                       {specificExploreData.sections.map((section: any, idx: number) => (
                         <div key={idx} className="p-8 bg-white/5 border border-white/10 rounded-3xl relative overflow-hidden group">
-                          <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl -mr-10 -mt-10 transition-transform group-hover:scale-150" />
-                          <h3 className="text-2xl font-bold text-yellow-500 mb-4">{section.heading}</h3>
+                          <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl -mr-10 -mt-10 transition-transform group-hover:scale-150" />
+                          <h3 className="text-2xl font-bold text-blue-500 mb-4">{section.heading}</h3>
                           <p className="text-gray-300 leading-relaxed">{section.text}</p>
                         </div>
                       ))}
@@ -143,7 +143,7 @@ export function GenericPage() {
                         "Continuous Performance Optimization"
                       ].map((feature, i) => (
                         <div key={i} className="flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/10">
-                          <CheckCircle2 className="w-6 h-6 text-yellow-500 shrink-0" />
+                          <CheckCircle2 className="w-6 h-6 text-blue-500 shrink-0" />
                           <p className="text-sm font-bold text-gray-200">{feature}</p>
                         </div>
                       ))}
@@ -161,13 +161,13 @@ export function GenericPage() {
                         onClick={() => setOpenFaqIndex(openFaqIndex === i ? null : i)}
                         aria-expanded={openFaqIndex === i}
                         aria-controls={`faq-generic-${i}`}
-                        className="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-yellow-500/50 gap-4"
+                        className="w-full text-left px-6 py-4 flex items-center justify-between focus:outline-none focus:ring-2 focus:ring-blue-500/50 gap-4"
                       >
                         <span className="font-semibold text-white text-base sm:text-lg break-words flex-1 leading-tight">{faq.question}</span>
                         {openFaqIndex === i ? (
-                          <Minus className="w-5 h-5 text-yellow-500 shrink-0" />
+                          <Minus className="w-5 h-5 text-blue-500 shrink-0" />
                         ) : (
-                          <Plus className="w-5 h-5 text-yellow-500 shrink-0" />
+                          <Plus className="w-5 h-5 text-blue-500 shrink-0" />
                         )}
                       </button>
                       <AnimatePresence>
@@ -177,7 +177,7 @@ export function GenericPage() {
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            className="bg-black/20 px-6 prose prose-invert overflow-hidden rounded-b-2xl"
+                            className="bg-[#18191A]/20 px-6 prose prose-invert overflow-hidden rounded-b-2xl"
                           >
                              <div className="pb-4 pt-2">
                                <p className="text-gray-400 leading-relaxed m-0 text-base">{faq.answer}</p>
@@ -195,33 +195,33 @@ export function GenericPage() {
             <div className="md:col-span-4">
               <motion.div 
                 initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
-                className="sticky top-32 p-8 rounded-3xl bg-[#0a0a0a] border border-white/10 shadow-2xl mb-8"
+                className="sticky top-32 p-8 rounded-3xl bg-[#242526] border border-white/10 shadow-2xl mb-8"
               >
-                <div className="w-12 h-12 bg-yellow-500/10 rounded-full flex items-center justify-center mb-6">
-                  {specificExploreData ? specificExploreData.icon : <Coins className="w-6 h-6 text-yellow-500" />}
+                <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center mb-6">
+                  {specificExploreData ? specificExploreData.icon : <Coins className="w-6 h-6 text-blue-500" />}
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">Investment Spec</h3>
                 <p className="text-sm text-gray-500 mb-6 uppercase tracking-widest font-black">Starting at {price}</p>
                 <p className="text-gray-400 text-sm mb-8 leading-relaxed">
                   Precision-engineered rate cards designed for ROI alignment. Scalable protocol based on market density.
                 </p>
-                <Link to="/strategy" className="flex items-center justify-center gap-2 w-full py-4 bg-yellow-500 text-black font-bold uppercase tracking-widest text-xs rounded-full hover:bg-yellow-400 transition-colors">
+                <Link to="/strategy" className="flex items-center justify-center gap-2 w-full py-4 bg-blue-500 text-white font-bold uppercase tracking-widest text-xs rounded-full hover:bg-blue-400 transition-colors">
                   Get Precise Quote <ArrowRight className="w-4 h-4" />
                 </Link>
               </motion.div>
 
               <motion.div 
                 initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
-                className="sticky top-[32rem] p-8 rounded-3xl bg-[#0a0a0a]/50 border border-white/10 backdrop-blur-sm"
+                className="sticky top-[32rem] p-8 rounded-3xl bg-[#242526]/50 border border-white/10 backdrop-blur-sm"
               >
-                <div className="w-12 h-12 bg-yellow-500/10 rounded-full flex items-center justify-center mb-6">
-                  <div className="w-6 h-6 bg-yellow-500 rounded-full animate-pulse" />
+                <div className="w-12 h-12 bg-blue-500/10 rounded-full flex items-center justify-center mb-6">
+                  <div className="w-6 h-6 bg-blue-500 rounded-full animate-pulse" />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-4">Command Your Market</h3>
                 <p className="text-gray-400 text-sm mb-8 leading-relaxed">
                   Ready to deploy elite {item.name.toLowerCase()} strategies? Connect with our senior growth engineers for a confidential consultation.
                 </p>
-                <Link to="/strategy" className="flex items-center justify-center gap-2 w-full py-4 bg-yellow-500 text-black font-bold uppercase tracking-widest text-xs rounded-full hover:bg-yellow-400 transition-colors">
+                <Link to="/strategy" className="flex items-center justify-center gap-2 w-full py-4 bg-blue-500 text-white font-bold uppercase tracking-widest text-xs rounded-full hover:bg-blue-400 transition-colors">
                   Contact Strategy Team <ArrowRight className="w-4 h-4" />
                 </Link>
                 
@@ -232,7 +232,7 @@ export function GenericPage() {
                       const isDetailedService = categoryName === "Services";
                       const route = isDetailedService ? `/services/${related.id}` : `/${related.id}`;
                       return (
-                        <Link key={related.id} to={route} className="text-sm text-gray-400 hover:text-yellow-500 flex items-center justify-between group">
+                        <Link key={related.id} to={route} className="text-sm text-gray-400 hover:text-blue-500 flex items-center justify-between group">
                           {related.name}
                           <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                         </Link>

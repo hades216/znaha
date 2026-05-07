@@ -32,7 +32,7 @@ const sourceData = [
   { name: 'Social', value: 10 },
 ];
 
-const COLORS = ['#EAB308', '#FDE047', '#A16207', '#422006'];
+const COLORS = ['#3B82F6', '#93C5FD', '#1D4ED8', '#1E3A8A'];
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -53,19 +53,19 @@ export function AdminDashboard() {
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
           <motion.div initial="hidden" animate="visible" variants={fadeIn}>
-            <div className="flex items-center gap-3 text-yellow-500 mb-2 uppercase tracking-[0.2em] font-bold text-[10px]">
+            <div className="flex items-center gap-3 text-blue-500 mb-2 uppercase tracking-[0.2em] font-bold text-[10px]">
               <Activity className="w-4 h-4" />
               Intelligence Dashboard
             </div>
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight break-words">Revenue Operations <span className="text-yellow-500">Center.</span></h1>
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight break-words">Revenue Operations <span className="text-blue-500">Center.</span></h1>
           </motion.div>
           
           <div className="flex gap-4">
             <button className="flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-xs font-bold uppercase tracking-widest hover:bg-white/10 transition-colors">
-              <Calendar className="w-4 h-4 text-yellow-500" />
+              <Calendar className="w-4 h-4 text-blue-500" />
               Last 30 Days
             </button>
-            <button className="px-6 py-2 bg-yellow-500 text-black text-xs font-bold uppercase tracking-widest rounded-lg hover:bg-yellow-400 transition-all">
+            <button className="px-6 py-2 bg-blue-500 text-white text-xs font-bold uppercase tracking-widest rounded-lg hover:bg-blue-400 transition-all">
               Export Audit
             </button>
           </div>
@@ -82,9 +82,9 @@ export function AdminDashboard() {
               transition={{ delay: i * 0.1 }}
               className="p-6 bg-white/5 border border-white/10 rounded-2xl relative overflow-hidden group"
             >
-              <div className="absolute top-0 right-0 w-24 h-24 bg-yellow-500/5 rounded-full blur-3xl -mr-12 -mt-12 group-hover:bg-yellow-500/10 transition-colors" />
+              <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-full blur-3xl -mr-12 -mt-12 group-hover:bg-blue-500/10 transition-colors" />
               <div className="flex items-center justify-between mb-4">
-                <div className="p-2 rounded-lg bg-yellow-500/10 border border-yellow-500/20 text-yellow-500">
+                <div className="p-2 rounded-lg bg-blue-500/10 border border-blue-500/20 text-blue-500">
                   {stat.icon}
                 </div>
                 <div className={`flex items-center gap-1 text-xs font-bold ${stat.isPositive ? 'text-green-400' : 'text-red-400'}`}>
@@ -111,7 +111,7 @@ export function AdminDashboard() {
               <h3 className="text-lg font-bold">Protocol Engagement & Conversion</h3>
               <div className="flex gap-4 text-[10px] font-bold uppercase tracking-widest">
                 <div className="flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-yellow-500" />
+                  <span className="w-2 h-2 rounded-full bg-blue-500" />
                   Sessions
                 </div>
                 <div className="flex items-center gap-2 text-white/40">
@@ -125,8 +125,8 @@ export function AdminDashboard() {
                 <AreaChart data={engagementData}>
                   <defs>
                     <linearGradient id="colorSessions" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#EAB308" stopOpacity={0.2}/>
-                      <stop offset="95%" stopColor="#EAB308" stopOpacity={0}/>
+                      <stop offset="5%" stopColor="#3B82F6" stopOpacity={0.2}/>
+                      <stop offset="95%" stopColor="#3B82F6" stopOpacity={0}/>
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="#222" vertical={false} />
@@ -134,9 +134,9 @@ export function AdminDashboard() {
                   <YAxis stroke="#555" fontSize={10} tickLine={false} axisLine={false} />
                   <Tooltip 
                     contentStyle={{ backgroundColor: '#111', border: '1px solid #333', borderRadius: '12px' }}
-                    itemStyle={{ color: '#EAB308' }}
+                    itemStyle={{ color: '#3B82F6' }}
                   />
-                  <Area type="monotone" dataKey="sessions" stroke="#EAB308" fillOpacity={1} fill="url(#colorSessions)" strokeWidth={2} />
+                  <Area type="monotone" dataKey="sessions" stroke="#3B82F6" fillOpacity={1} fill="url(#colorSessions)" strokeWidth={2} />
                   <Area type="monotone" dataKey="leads" stroke="#ffffff20" fill="transparent" strokeWidth={2} strokeDasharray="5 5" />
                 </AreaChart>
               </ResponsiveContainer>
@@ -202,7 +202,7 @@ export function AdminDashboard() {
                   <Tooltip 
                     contentStyle={{ backgroundColor: '#111', border: '1px solid #333', borderRadius: '12px' }}
                   />
-                  <Line type="monotone" dataKey="rate" stroke="#EAB308" strokeWidth={3} dot={{ fill: '#EAB308', strokeWidth: 2, r: 4 }} />
+                  <Line type="monotone" dataKey="rate" stroke="#3B82F6" strokeWidth={3} dot={{ fill: '#3B82F6', strokeWidth: 2, r: 4 }} />
                 </LineChart>
               </ResponsiveContainer>
             </div>
@@ -225,9 +225,9 @@ export function AdminDashboard() {
                 { name: "Elena Grey", company: "Azure Real Estate", status: "In Discussion", time: "14 min ago", value: "$125k/yr" },
                 { name: "Marcus Thorne", company: "Private Portfolio", status: "Audit Pending", time: "1 hour ago", value: "$1.8M" },
               ].map((lead, i) => (
-                <div key={i} className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5 hover:border-yellow-500/20 transition-all cursor-default">
+                <div key={i} className="flex items-center justify-between p-4 bg-white/5 rounded-xl border border-white/5 hover:border-blue-500/20 transition-all cursor-default">
                   <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-500 to-yellow-700 flex items-center justify-center text-black font-bold text-xs">
+                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white font-bold text-xs">
                       {lead.name.split(' ').map(n => n[0]).join('')}
                     </div>
                     <div>
@@ -236,7 +236,7 @@ export function AdminDashboard() {
                     </div>
                   </div>
                   <div className="text-right">
-                    <p className="text-xs font-bold text-yellow-500 mb-1">{lead.value}</p>
+                    <p className="text-xs font-bold text-blue-500 mb-1">{lead.value}</p>
                     <p className="text-[10px] text-gray-600 uppercase tracking-widest">{lead.time}</p>
                   </div>
                 </div>

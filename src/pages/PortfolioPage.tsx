@@ -134,12 +134,12 @@ export function PortfolioPage() {
         <motion.div initial="hidden" animate="visible" variants={fadeIn}>
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12 border-b border-white/10 pb-16">
             <div className="max-w-3xl">
-              <div className="flex items-center gap-3 text-yellow-500 mb-6 uppercase tracking-[0.3em] font-bold text-[10px]">
+              <div className="flex items-center gap-3 text-blue-500 mb-6 uppercase tracking-[0.3em] font-bold text-[10px]">
                 <Target className="w-4 h-4" />
                 Case Study Archives
               </div>
               <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold leading-[1.1] md:leading-[0.85] text-white tracking-tighter mb-8 break-words">
-                Proven <span className="text-yellow-500">Revenue</span> <br />Architecture.
+                Proven <span className="text-blue-500">Revenue</span> <br />Architecture.
               </h1>
               <p className="text-xl text-gray-400 font-serif leading-relaxed max-w-2xl">
                 We don't showcase pretty designs. We showcase absolute market dominance, backed by verified data and proprietary acquisition protocols.
@@ -148,7 +148,7 @@ export function PortfolioPage() {
             
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-4 py-3 px-6 bg-white/5 border border-white/10 rounded-2xl">
-                <TrendingUp className="w-5 h-5 text-yellow-500" />
+                <TrendingUp className="w-5 h-5 text-blue-500" />
                 <div className="flex flex-col">
                   <span className="text-xs font-bold uppercase tracking-widest text-gray-500">Aggregated Impact</span>
                   <span className="text-2xl font-bold text-white">$142M+ Generated</span>
@@ -163,7 +163,7 @@ export function PortfolioPage() {
       <section className="px-6 md:px-12 mb-16 max-w-7xl mx-auto">
         <div className="flex flex-wrap items-center gap-3">
           <div className="p-2 bg-white/5 border border-white/10 rounded-xl mr-2">
-            <Filter className="w-4 h-4 text-yellow-500" />
+            <Filter className="w-4 h-4 text-blue-500" />
           </div>
           {CATEGORIES.map((cat) => (
             <button
@@ -174,12 +174,12 @@ export function PortfolioPage() {
               {activeCategory === cat && (
                 <motion.div
                   layoutId="activeFilter"
-                  className="absolute inset-0 bg-yellow-500 rounded-full shadow-[0_0_20px_rgba(234,179,8,0.3)]"
+                  className="absolute inset-0 bg-blue-500 rounded-full shadow-[0_0_20px_rgba(59,130,246,0.3)]"
                   transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
                 />
               )}
               <span className={`relative z-10 text-xs font-bold uppercase tracking-widest transition-colors duration-300 ${
-                activeCategory === cat ? 'text-black' : 'text-gray-400 group-hover:text-white'
+                activeCategory === cat ? 'text-white' : 'text-gray-400 group-hover:text-white'
               }`}>
                 {cat}
               </span>
@@ -207,25 +207,25 @@ export function PortfolioPage() {
                 className={`group relative flex flex-col ${project.featured ? 'lg:col-span-2' : ''}`}
               >
                 {/* Image & Hover Layer */}
-                <div className={`relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#0A0A0A] p-2 transition-all duration-500 group-hover:border-yellow-500/30 group-hover:shadow-[0_0_50px_rgba(234,179,8,0.1)] ${project.featured ? 'aspect-[2/1]' : 'aspect-square'}`}>
+                <div className={`relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#242526] p-2 transition-all duration-500 group-hover:border-blue-500/30 group-hover:shadow-[0_0_50px_rgba(59,130,246,0.1)] ${project.featured ? 'aspect-[2/1]' : 'aspect-square'}`}>
                   <div className="w-full h-full rounded-[1.5rem] overflow-hidden relative">
                     <img 
                       src={project.image} 
                       alt={project.name} 
                       className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 opacity-70 group-hover:opacity-30"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#18191A] via-[#18191A]/20 to-transparent"></div>
                     
                     {/* Corner Detail */}
                     <div className="absolute top-8 right-8">
-                      <div className="w-12 h-12 rounded-full bg-black/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0">
+                      <div className="w-12 h-12 rounded-full bg-[#18191A]/80 backdrop-blur-md border border-white/10 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-4 group-hover:translate-x-0">
                         <ArrowUpRight className="w-5 h-5" />
                       </div>
                     </div>
 
                     {/* Bottom Label */}
                     <div className="absolute bottom-8 left-8 transform transition-all duration-500 group-hover:-translate-y-8 group-hover:opacity-0">
-                      <p className="text-yellow-500 text-[10px] font-black uppercase tracking-[0.4em] mb-2">{project.niche}</p>
+                      <p className="text-blue-500 text-[10px] font-black uppercase tracking-[0.4em] mb-2">{project.niche}</p>
                       <h3 className="text-3xl font-bold text-white tracking-tight">{project.name}</h3>
                     </div>
 
@@ -233,7 +233,7 @@ export function PortfolioPage() {
                     <div className="absolute inset-0 p-12 flex flex-col justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-8 group-hover:translate-y-0 pointer-events-none">
                        <div className="grid md:grid-cols-2 gap-8 items-center">
                           <div>
-                            <span className="text-[10px] font-black text-yellow-500 uppercase tracking-widest mb-4 block">Execution Strategy</span>
+                            <span className="text-[10px] font-black text-blue-500 uppercase tracking-widest mb-4 block">Execution Strategy</span>
                             <p className="text-lg text-white mb-6 leading-relaxed font-serif">{project.solution}</p>
                             <div className="flex flex-wrap gap-2">
                               {project.tags.map(tag => (
@@ -243,7 +243,7 @@ export function PortfolioPage() {
                           </div>
                           <div className="space-y-6">
                             {project.stats.map((s, idx) => (
-                              <div key={idx} className="border-l border-yellow-500/50 pl-4 py-1">
+                              <div key={idx} className="border-l border-blue-500/50 pl-4 py-1">
                                 <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest">{s.label}</p>
                                 <p className="text-2xl font-bold text-white">{s.value}</p>
                               </div>
@@ -261,7 +261,7 @@ export function PortfolioPage() {
                       <span className="text-xl font-bold text-white">{project.name}</span>
                    </div>
                    <div className="text-right">
-                      <span className="text-xl font-bold text-yellow-500">{project.metric}</span>
+                      <span className="text-xl font-bold text-blue-500">{project.metric}</span>
                       <p className="text-[10px] text-gray-600 font-bold uppercase tracking-widest">Verified Case</p>
                    </div>
                 </div>
@@ -280,12 +280,12 @@ export function PortfolioPage() {
             viewport={{ once: true }}
             variants={fadeIn}
           >
-            <Zap className="w-12 h-12 text-yellow-500 mx-auto mb-8" />
+            <Zap className="w-12 h-12 text-blue-500 mx-auto mb-8" />
             <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-10 tracking-tighter break-words">Your brand <br /> is next.</h2>
             <p className="text-xl text-gray-400 font-serif mb-12 leading-relaxed max-w-2xl mx-auto">
               We only accept 2 brand partners per quarter to ensure uncompromising delivery of these results. Secure your strategy consultation now.
             </p>
-            <Link to="/strategy" className="inline-flex items-center justify-center px-12 py-6 bg-yellow-500 text-black font-black text-xs tracking-[0.3em] uppercase rounded-full hover:bg-yellow-400 transition-all shadow-[0_0_40px_rgba(234,179,8,0.3)] gap-4 group">
+            <Link to="/strategy" className="inline-flex items-center justify-center px-12 py-6 bg-blue-500 text-white font-black text-xs tracking-[0.3em] uppercase rounded-full hover:bg-blue-400 transition-all shadow-[0_0_40px_rgba(59,130,246,0.3)] gap-4 group">
               REQUEST PRIORITY AUDIT
               <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
             </Link>

@@ -14,13 +14,13 @@ function MobileAccordionItem({ categoryKey, category, setMobileMenuOpen, variant
     <motion.div variants={variants} className="w-full">
       <button 
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between text-xl font-bold text-gray-200 hover:text-yellow-400 py-3 transition-colors border-b border-white/5 group"
+        className="w-full flex items-center justify-between text-xl font-bold text-gray-200 hover:text-blue-400 py-3 transition-colors border-b border-white/5 group"
       >
         <span className="group-hover:translate-x-2 transition-transform duration-300">{category.title}</span>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.3, ease: [0.33, 1, 0.68, 1] }}
-          className="bg-white/5 p-1.5 rounded-full group-hover:bg-yellow-500/10 group-hover:text-yellow-500 transition-colors"
+          className="bg-white/5 p-1.5 rounded-full group-hover:bg-blue-500/10 group-hover:text-blue-500 transition-colors"
         >
           <ChevronDown className="w-5 h-5" />
         </motion.div>
@@ -35,7 +35,7 @@ function MobileAccordionItem({ categoryKey, category, setMobileMenuOpen, variant
             transition={{ duration: 0.3, ease: [0.33, 1, 0.68, 1] }}
             className="overflow-hidden"
           >
-            <div className="flex flex-col gap-1 py-4 pl-4 border-l-2 border-yellow-500/20 ml-2 mt-2 bg-gradient-to-b from-white/[0.02] to-transparent rounded-r-2xl pr-4">
+            <div className="flex flex-col gap-1 py-4 pl-4 border-l-2 border-blue-500/20 ml-2 mt-2 bg-gradient-to-b from-white/[0.02] to-transparent rounded-r-2xl pr-4">
               {category.items.map((item: any) => {
                 const route = isDetailedService ? `/services/${item.id}` : `/${item.id}`;
                 return (
@@ -43,10 +43,10 @@ function MobileAccordionItem({ categoryKey, category, setMobileMenuOpen, variant
                     key={item.id}
                     to={route}
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex items-center justify-between text-[15px] font-medium text-gray-400 hover:text-yellow-400 py-2.5 transition-all group/item"
+                    className="flex items-center justify-between text-[15px] font-medium text-gray-400 hover:text-blue-400 py-2.5 transition-all group/item"
                   >
                     <span className="group-hover/item:translate-x-2 transition-transform duration-300">{item.name}</span>
-                    <ChevronRight className="w-4 h-4 opacity-0 transition-all -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 text-yellow-500" />
+                    <ChevronRight className="w-4 h-4 opacity-0 transition-all -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 text-blue-500" />
                   </Link>
                 );
               })}
@@ -87,7 +87,7 @@ export function Navbar() {
   return (
     <header 
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-black/40 backdrop-blur-xl border-b border-white/5 py-4' : 'bg-transparent py-4 border-b border-transparent'
+        scrolled ? 'bg-[#18191A]/40 backdrop-blur-xl border-b border-white/5 py-4' : 'bg-transparent py-4 border-b border-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 md:px-12 flex items-center justify-between">
@@ -110,7 +110,7 @@ export function Navbar() {
               </span>
               
               <div className="absolute top-[100%] left-1/2 -translate-x-1/2 pt-6 opacity-0 invisible group-hover/nav:opacity-100 group-hover/nav:visible transition-all duration-300">
-                <div className="bg-[#0a0a0a]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.5),0_0_20px_rgba(234,179,8,0.05)] p-3 min-w-[240px] flex flex-col gap-1 ring-1 ring-white/5 relative overflow-hidden">
+                <div className="bg-[#242526]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.5),0_0_20px_rgba(59,130,246,0.05)] p-3 min-w-[240px] flex flex-col gap-1 ring-1 ring-white/5 relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-b from-white/[0.02] to-transparent pointer-events-none" />
                   {category.items.map(item => {
                     const isDetailedService = category.title === "Services";
@@ -119,10 +119,10 @@ export function Navbar() {
                       <Link 
                         key={item.id} 
                         to={route} 
-                        className="group/link flex items-center justify-between px-4 py-3 rounded-xl text-gray-300 hover:text-yellow-400 hover:bg-white/[0.03] transition-all relative z-10"
+                        className="group/link flex items-center justify-between px-4 py-3 rounded-xl text-gray-300 hover:text-blue-400 hover:bg-white/[0.03] transition-all relative z-10"
                       >
                         <span className="text-[13px] font-medium tracking-wide">{item.name}</span>
-                        <ChevronRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all text-yellow-500" />
+                        <ChevronRight className="w-3 h-3 opacity-0 -translate-x-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-all text-blue-500" />
                       </Link>
                     );
                   })}
@@ -136,7 +136,7 @@ export function Navbar() {
               <button 
                 key={lng}
                 onClick={() => changeLanguage(lng)} 
-                className={`hover:text-yellow-500 uppercase ${i18n.language === lng ? 'text-yellow-500' : ''}`}
+                className={`hover:text-blue-500 uppercase ${i18n.language === lng ? 'text-blue-500' : ''}`}
               >
                 {lng}
               </button>
@@ -162,7 +162,7 @@ export function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: '100vh' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden fixed inset-0 bg-black/95 backdrop-blur-3xl z-40 flex flex-col justify-center items-center"
+            className="md:hidden fixed inset-0 bg-[#18191A]/95 backdrop-blur-3xl z-40 flex flex-col justify-center items-center"
           >
             <motion.div 
               className="flex flex-col items-center gap-6 w-full px-6 h-full overflow-y-auto py-24 pb-32"
@@ -173,7 +173,7 @@ export function Navbar() {
                   <Link 
                     to="/" 
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block text-xl font-bold text-gray-200 hover:text-yellow-400 py-2 transition-colors border-b border-white/5"
+                    className="block text-xl font-bold text-gray-200 hover:text-blue-400 py-2 transition-colors border-b border-white/5"
                   >
                     Home
                   </Link>
@@ -193,7 +193,7 @@ export function Navbar() {
                   <Link 
                     to="/about" 
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block text-xl font-bold text-gray-200 hover:text-yellow-400 py-2 transition-colors border-b border-white/5"
+                    className="block text-xl font-bold text-gray-200 hover:text-blue-400 py-2 transition-colors border-b border-white/5"
                   >
                     About Us
                   </Link>
@@ -203,7 +203,7 @@ export function Navbar() {
                   <Link 
                     to="/insights" 
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block text-xl font-bold text-gray-200 hover:text-yellow-400 py-2 transition-colors border-b border-white/5"
+                    className="block text-xl font-bold text-gray-200 hover:text-blue-400 py-2 transition-colors border-b border-white/5"
                   >
                     Blog
                   </Link>
@@ -213,7 +213,7 @@ export function Navbar() {
                   <Link 
                     to="/strategy" 
                     onClick={() => setMobileMenuOpen(false)}
-                    className="block text-xl font-bold text-gray-200 hover:text-yellow-400 py-2 transition-colors border-b border-white/5"
+                    className="block text-xl font-bold text-gray-200 hover:text-blue-400 py-2 transition-colors border-b border-white/5"
                   >
                     Contact Us
                   </Link>
@@ -227,7 +227,7 @@ export function Navbar() {
                         changeLanguage(lng);
                         setMobileMenuOpen(false);
                       }} 
-                      className={`hover:text-yellow-500 uppercase ${i18n.language === lng ? 'text-yellow-500' : ''}`}
+                      className={`hover:text-blue-500 uppercase ${i18n.language === lng ? 'text-blue-500' : ''}`}
                     >
                       {lng}
                     </button>

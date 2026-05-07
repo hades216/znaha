@@ -64,7 +64,7 @@ export default function App() {
   return (
     <Router>
       <ScrollToHash />
-      <div className="min-h-screen selection:bg-yellow-500/30 selection:text-white relative bg-[#050505] overflow-x-hidden">
+      <div className="min-h-screen selection:bg-blue-500/30 selection:text-white relative bg-[#18191A] overflow-x-hidden">
         <Background3D />
         <Navbar />
         

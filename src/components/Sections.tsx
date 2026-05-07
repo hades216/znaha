@@ -21,9 +21,9 @@ export function Hero() {
     <section className="relative min-h-screen flex flex-col items-center pt-28 pb-20 justify-center z-10 px-6 overflow-hidden">
       <div className="w-full max-w-5xl mx-auto text-center">
         <motion.div initial="hidden" animate="visible" variants={fadeIn}>
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-500/10 border border-yellow-500/20 rounded-full w-fit mb-6">
-            <span className="flex h-2 w-2 rounded-full bg-yellow-500 animate-pulse" />
-            <span className="text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Premium Digital Agency</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full w-fit mb-6">
+            <span className="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
+            <span className="text-[10px] font-bold text-blue-500 uppercase tracking-widest">Premium Digital Agency</span>
           </div>
         </motion.div>
 
@@ -33,7 +33,7 @@ export function Hero() {
             initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.1 }}
           >
             <FloatingText depth={15} className="block">We Engineer</FloatingText>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-200 to-white block">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-white block">
               Digital Dominance.
             </span>
           </motion.h1>
@@ -50,15 +50,15 @@ export function Hero() {
           className="flex flex-col sm:flex-row items-center justify-center gap-6"
           initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.3 }}
         >
-          <Link to="/strategy" className="inline-flex px-8 py-4 bg-yellow-500 text-black font-bold rounded-full hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.3)] items-center justify-center gap-2">
+          <Link to="/strategy" className="inline-flex px-8 py-4 bg-blue-500 text-white font-bold rounded-full hover:bg-blue-400 transition-all duration-300 shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_40px_rgba(59,130,246,0.6)] hover:-translate-y-1 hover:scale-105 group items-center justify-center gap-2">
             Get a Custom Proposal
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
           </Link>
           
           <div className="flex items-center gap-4 text-left">
             <div className="flex -space-x-3">
               <div className="w-10 h-10 rounded-full bg-gray-800 border-2 border-black flex items-center justify-center text-[10px] text-white">A</div>
-              <div className="w-10 h-10 rounded-full bg-yellow-600 border-2 border-black flex items-center justify-center text-[10px] text-white">B</div>
+              <div className="w-10 h-10 rounded-full bg-blue-500 border-2 border-black flex items-center justify-center text-[10px] text-white">B</div>
               <div className="w-10 h-10 rounded-full bg-gray-600 border-2 border-black flex items-center justify-center text-[10px] text-white">C</div>
             </div>
             <div className="text-sm">
@@ -81,7 +81,7 @@ export function Hero() {
               { value: "93%", label: "Client Retention Rate" },
             ].map((stat, i) => (
               <motion.div key={i} variants={fadeIn} className="text-center">
-                <div className="text-3xl md:text-4xl font-serif font-bold text-yellow-500 mb-2">{stat.value}</div>
+                <div className="text-3xl md:text-4xl font-serif font-bold text-blue-500 mb-2">{stat.value}</div>
                 <div className="text-xs uppercase tracking-widest text-gray-500">{stat.label}</div>
               </motion.div>
             ))}
@@ -90,7 +90,7 @@ export function Hero() {
 
         {/* Social Proof Section - Marquee Layout */}
         <motion.div 
-          className="mt-20 py-20 border-y border-white/5 bg-[#0a0a0a] overflow-hidden"
+          className="mt-20 py-20 border-y border-white/5 bg-[#242526] overflow-hidden"
           initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.6 }}
         >
           <div className="container mx-auto px-6 mb-16 text-center">
@@ -123,7 +123,7 @@ export function Hero() {
 
 export function CertificationsBanner() {
   return (
-    <div className="py-16 border-y border-white/5 bg-[#0a0a0a] overflow-hidden w-full relative z-10">
+    <div className="py-16 border-y border-white/5 bg-[#242526] overflow-hidden w-full relative z-10">
       <div className="container mx-auto px-6 mb-12 text-center">
          <p className="text-[10px] uppercase tracking-[0.4em] font-black text-gray-400">Official Certifications & Partnerships</p>
       </div>
@@ -177,7 +177,7 @@ export function Services() {
             <Link 
               to={`/services/${service.id}`}
               key={service.id}
-              className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-yellow-500/30 transition-all group relative overflow-hidden flex flex-col cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-yellow-500"
+              className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-blue-500/30 transition-all group relative overflow-hidden flex flex-col cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
             >
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
@@ -186,13 +186,13 @@ export function Services() {
                 transition={{ delay: i * 0.1, duration: 0.6 }}
                 className="flex flex-col h-full"
               >
-                <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl -mr-10 -mt-10 transition-transform group-hover:scale-150" />
-                <div className="mb-6 inline-flex p-4 rounded-xl bg-black/50 border border-white/5 self-start transform transition-all duration-500 group-hover:scale-110 group-hover:-rotate-6 group-hover:shadow-[0_0_20px_rgba(234,179,8,0.2)]">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-3xl -mr-10 -mt-10 transition-transform group-hover:scale-150" />
+                <div className="mb-6 inline-flex p-4 rounded-xl bg-[#18191A]/50 border border-white/5 self-start transform transition-all duration-500 group-hover:scale-110 group-hover:-rotate-6 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.2)]">
                   {service.icon}
                 </div>
-                <h3 className="text-lg font-semibold mb-3 break-words text-white group-hover:text-yellow-500 transition-colors">{service.title}</h3>
+                <h3 className="text-lg font-semibold mb-3 break-words text-white group-hover:text-blue-500 transition-colors">{service.title}</h3>
                 <p className="text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3">{service.shortDesc || service.desc}</p>
-                <div className="inline-flex items-center text-[10px] uppercase font-bold text-yellow-500 hover:text-yellow-400 transition-colors mt-auto group-hover:translate-x-1 duration-300">
+                <div className="inline-flex items-center text-[10px] uppercase font-bold text-blue-500 hover:text-blue-400 transition-colors mt-auto group-hover:translate-x-1 duration-300">
                   Explore Service <ChevronRight className="w-4 h-4 ml-1" />
                 </div>
               </motion.div>
@@ -213,7 +213,7 @@ export function Portfolio() {
   ];
 
   return (
-    <section id="portfolio" className="py-32 relative z-10 bg-black/40 border-y border-white/5">
+    <section id="portfolio" className="py-32 relative z-10 bg-[#18191A]/40 border-y border-white/5">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="flex flex-col md:flex-row justify-between items-center md:items-end mb-20 gap-8 text-center md:text-left font-sans">
           <motion.div 
@@ -223,11 +223,11 @@ export function Portfolio() {
             transition={{ duration: 0.8 }}
             className="max-w-2xl w-full"
           >
-            <div className="flex items-center justify-center md:justify-start gap-3 text-yellow-500 mb-6 uppercase tracking-[0.3em] font-bold text-[10px]">
+            <div className="flex items-center justify-center md:justify-start gap-3 text-blue-500 mb-6 uppercase tracking-[0.3em] font-bold text-[10px]">
               <Target className="w-4 h-4" />
               Strategic Victories
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 tracking-tighter break-words overflow-hidden">Our Legacy of <span className="text-yellow-500">Success.</span></h2>
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 tracking-tighter break-words overflow-hidden">Our Legacy of <span className="text-blue-500">Success.</span></h2>
             <p className="text-gray-400 text-sm md:text-lg font-serif">Case studies detailing how we transform digital presence into measurable equity and revenue growth.</p>
           </motion.div>
           <motion.div 
@@ -239,7 +239,7 @@ export function Portfolio() {
           >
             <Link 
               to="/portfolio" 
-              className="px-10 py-4 bg-white/5 border border-white/10 text-white hover:bg-yellow-500 hover:text-black transition-all font-bold text-xs uppercase tracking-[0.2em] rounded-full inline-block"
+              className="px-10 py-4 bg-white/5 border border-white/10 text-white hover:bg-blue-500 hover:text-white transition-all font-bold text-xs uppercase tracking-[0.2em] rounded-full inline-block"
             >
               Explore Full Gallery
             </Link>
@@ -254,7 +254,7 @@ export function Portfolio() {
             <motion.div 
               key={i} 
               variants={fadeIn} 
-              className="group relative overflow-hidden bg-black cursor-pointer rounded-[2.5rem] border border-white/10 shadow-2xl transition-all duration-700 hover:border-yellow-500/30 p-2"
+              className="group relative overflow-hidden bg-[#18191A] cursor-pointer rounded-[2.5rem] border border-white/10 shadow-2xl transition-all duration-700 hover:border-blue-500/30 p-2"
             >
               <div className="aspect-[16/10] overflow-hidden rounded-[2rem] relative">
                 <img 
@@ -262,11 +262,11 @@ export function Portfolio() {
                   alt={project.name} 
                   className="w-full h-full object-cover opacity-60 group-hover:opacity-30 transition-all duration-1000 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#18191A] via-[#18191A]/20 to-transparent" />
                 
                 <div className="absolute inset-0 p-10 flex flex-col justify-end">
                   <div className="transform transition-all duration-500 group-hover:-translate-y-4">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-500 text-black text-[10px] font-black uppercase tracking-widest mb-6 rounded-sm">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500 text-white text-[10px] font-black uppercase tracking-widest mb-6 rounded-sm">
                       <Zap className="w-3 h-3" />
                       {project.metric} Impact
                     </div>
@@ -309,7 +309,7 @@ export function Testimonials() {
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} transition={{ delay: i * 0.1 }}
               className="p-5 rounded-2xl bg-white/5 border border-white/10 text-left relative flex flex-col justify-between"
             >
-              <div className="text-yellow-500/20 absolute top-4 right-4 font-serif text-5xl leading-none">"</div>
+              <div className="text-blue-500/20 absolute top-4 right-4 font-serif text-5xl leading-none">"</div>
               <p className="text-sm italic text-gray-300 leading-relaxed relative z-10 mb-6 flex-1 pr-4">"{review.quote}"</p>
               <div className="flex items-center gap-3 pt-4 border-t border-white/5">
                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-700 to-gray-900 border border-white/10 shrink-0"></div>
@@ -330,7 +330,7 @@ export function Blog() {
   const displayArticles = articles.slice(0, 3);
 
   return (
-    <section id="blog" className="py-32 relative z-10 bg-black/40 border-t border-white/5">
+    <section id="blog" className="py-32 relative z-10 bg-[#18191A]/40 border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
@@ -348,8 +348,8 @@ export function Blog() {
           className="grid md:grid-cols-3 gap-8"
         >
           {displayArticles.map((article, i) => (
-            <Link key={i} to={`/insights/${article.slug}`} className="col-span-1 p-5 rounded-2xl bg-white/5 border border-white/10 group block hover:border-yellow-500/30 transition-all flex flex-col h-full">
-              <p className="text-[10px] text-yellow-500 font-bold mb-2 uppercase tracking-tighter">{article.category}</p>
+            <Link key={i} to={`/insights/${article.slug}`} className="col-span-1 p-5 rounded-2xl bg-white/5 border border-white/10 group block hover:border-blue-500/30 transition-all flex flex-col h-full">
+              <p className="text-[10px] text-blue-500 font-bold mb-2 uppercase tracking-tighter">{article.category}</p>
               <h3 className="text-sm font-semibold leading-tight text-white mb-4 flex-1">{article.title}</h3>
               <div className="aspect-video rounded-lg overflow-hidden border border-white/5 relative mb-4">
                 <img 
@@ -358,7 +358,7 @@ export function Blog() {
                   className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
                 />
               </div>
-              <div className="mt-auto flex items-center justify-between text-[10px] text-yellow-500 font-bold">
+              <div className="mt-auto flex items-center justify-between text-[10px] text-blue-500 font-bold">
                 <span>READ ARTICLE</span>
                 <span className="text-xl">→</span>
               </div>
@@ -417,15 +417,15 @@ export function HomeContact() {
   };
 
   const getInputClass = (name: string) => {
-    return `w-full bg-black/40 border rounded-full px-6 py-4 placeholder-white/20 text-white focus:outline-none transition-all ${
+    return `w-full bg-[#18191A]/40 border rounded-full px-6 py-4 placeholder-white/20 text-white focus:outline-none transition-all ${
       errors[name] 
         ? 'border-red-500/50 shadow-[0_0_10px_rgba(239,68,68,0.1)]' 
-        : 'border-white/10 focus:border-yellow-500/50'
+        : 'border-white/10 focus:border-blue-500/50'
     }`;
   };
 
   return (
-    <section id="contact" className="py-32 relative z-10 border-t border-white/5 bg-[#0a0a0a]">
+    <section id="contact" className="py-32 relative z-10 border-t border-white/5 bg-[#242526]">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
@@ -435,13 +435,13 @@ export function HomeContact() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-500/10 border border-yellow-500/20 rounded-full w-fit mb-6">
-              <span className="flex h-2 w-2 rounded-full bg-yellow-500 animate-pulse" />
-              <span className="text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Immediate Impact</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full w-fit mb-6">
+              <span className="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
+              <span className="text-[10px] font-bold text-blue-500 uppercase tracking-widest">Immediate Impact</span>
             </div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-6 text-white leading-tight">
               Ready to architect <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-200 to-white">your market takeover?</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-white">your market takeover?</span>
             </h2>
             <p className="text-gray-400 text-lg leading-relaxed mb-8 max-w-md font-sans">
               Skip the queue. Drop your details below and a senior growth engineer will reach out within 2 hours to discuss your precise acquisition goals.
@@ -451,7 +451,7 @@ export function HomeContact() {
                  <div className="w-10 h-10 rounded-full bg-gray-800 border-2 border-black flex items-center justify-center text-[10px] text-white overflow-hidden">
                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80" alt="Consultant" className="w-full h-full object-cover" />
                  </div>
-                 <div className="w-10 h-10 rounded-full bg-yellow-600 border-2 border-black flex items-center justify-center text-[10px] text-white overflow-hidden">
+                 <div className="w-10 h-10 rounded-full bg-blue-500 border-2 border-black flex items-center justify-center text-[10px] text-white overflow-hidden">
                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80" alt="Consultant" className="w-full h-full object-cover" />
                  </div>
                </div>
@@ -463,11 +463,11 @@ export function HomeContact() {
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn} transition={{ delay: 0.2 }}
             className="p-8 md:p-10 rounded-3xl bg-white/5 border border-white/10 shadow-2xl relative overflow-hidden"
           >
-             <div className="absolute top-[-50px] right-[-50px] w-48 h-48 bg-yellow-500/10 rounded-full blur-[80px] pointer-events-none" />
+             <div className="absolute top-[-50px] right-[-50px] w-48 h-48 bg-blue-500/10 rounded-full blur-[80px] pointer-events-none" />
              
              {isSubmitted ? (
                <div className="relative z-10 flex flex-col items-center justify-center text-center h-full py-12">
-                 <div className="w-16 h-16 bg-yellow-500/20 text-yellow-500 rounded-full flex items-center justify-center mb-6 border border-yellow-500/50">
+                 <div className="w-16 h-16 bg-blue-500/20 text-blue-500 rounded-full flex items-center justify-center mb-6 border border-blue-500/50">
                    <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                  </div>
                  <h3 className="text-2xl font-bold text-white mb-2">Request Received</h3>
@@ -525,7 +525,7 @@ export function HomeContact() {
                     />
                     {errors.goal && <span className="text-red-500 text-[10px] uppercase font-bold tracking-widest">{errors.goal}</span>}
                  </div>
-                 <button type="submit" className="w-full mt-2 bg-yellow-500 text-black font-bold text-sm tracking-wider uppercase py-4 rounded-full hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.2)] flex justify-center items-center gap-2">
+                 <button type="submit" className="w-full mt-2 bg-blue-500 text-white font-bold text-sm tracking-wider uppercase py-4 rounded-full hover:bg-blue-400 transition-all shadow-[0_0_20px_rgba(59,130,246,0.2)] flex justify-center items-center gap-2">
                    Send Inquiry
                    <ArrowRight className="w-4 h-4" />
                  </button>
@@ -541,12 +541,12 @@ export function HomeContact() {
 
 export function Footer() {
   return (
-    <footer className="bg-black relative z-10 border-t border-white/10 pt-20 pb-10">
+    <footer className="bg-[#18191A] relative z-10 border-t border-white/10 pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-10">
         <div className="grid grid-cols-2 lg:grid-cols-6 gap-12 mb-16">
           <div className="col-span-2 lg:col-span-1">
             <Link to="/" className="text-3xl font-serif font-bold tracking-widest text-white flex items-center gap-2 mb-6">
-              ZNAHA<span className="w-2 h-2 rounded-full bg-yellow-500 inline-block" />
+              ZNAHA<span className="w-2 h-2 rounded-full bg-blue-500 inline-block" />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               Engineering digital dominance for the world's most ambitious luxury brands.
@@ -562,7 +562,7 @@ export function Footer() {
                   const route = isDetailedService ? `/services/${item.id}` : `/${item.id}`;
                   return (
                     <li key={item.id}>
-                      <Link to={route} className="text-gray-400 hover:text-yellow-500 text-sm transition-colors">{item.name}</Link>
+                      <Link to={route} className="text-gray-400 hover:text-blue-500 text-sm transition-colors">{item.name}</Link>
                     </li>
                   );
                 })}

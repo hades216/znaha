@@ -19,7 +19,7 @@ export function ServiceDetailPage() {
     return (
       <main className="pt-40 pb-20 min-h-[70vh] flex items-center justify-center flex-col text-center z-10 relative">
         <h1 className="text-4xl font-bold mb-4">Service Not Found.</h1>
-        <Link to="/services" className="text-yellow-500 hover:underline">Return to Services</Link>
+        <Link to="/services" className="text-blue-500 hover:underline">Return to Services</Link>
       </main>
     );
   }
@@ -30,7 +30,7 @@ export function ServiceDetailPage() {
         
         {/* Navigation & Header */}
         <motion.div initial="hidden" animate="visible" variants={fadeIn}>
-          <Link to="/services" className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-yellow-500 transition-colors mb-12 group">
+          <Link to="/services" className="inline-flex items-center text-xs font-bold uppercase tracking-widest text-gray-500 hover:text-blue-500 transition-colors mb-12 group">
             <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
             Back to All Services
           </Link>
@@ -42,7 +42,7 @@ export function ServiceDetailPage() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="mb-8 inline-flex p-5 rounded-2xl bg-white/5 border border-white/10 text-yellow-500 shadow-[0_0_30px_rgba(234,179,8,0.1)] w-fit"
+                  className="mb-8 inline-flex p-5 rounded-2xl bg-white/5 border border-white/10 text-blue-500 shadow-[0_0_30px_rgba(59,130,246,0.1)] w-fit"
                 >
                   {service.icon}
                 </motion.div>
@@ -51,29 +51,29 @@ export function ServiceDetailPage() {
                     <FloatingText depth={20}>{service.title}</FloatingText>
                   </TiltHeading>
                 </h1>
-                <p className="text-xl text-gray-400 leading-relaxed font-serif mb-8 border-l-4 border-yellow-500 pl-6">
+                <p className="text-xl text-gray-400 leading-relaxed font-serif mb-8 border-l-4 border-blue-500 pl-6">
                   {service.desc}
                 </p>
                 <div className="flex flex-wrap gap-4 mt-4">
-                  <div className="w-full flex items-center gap-2 text-yellow-500 mb-6 bg-yellow-500/5 border border-yellow-500/10 p-4 rounded-xl">
+                  <div className="w-full flex items-center gap-2 text-blue-500 mb-6 bg-blue-500/5 border border-blue-500/10 p-4 rounded-xl">
                     <Coins className="w-5 h-5" />
                     <span className="text-sm font-bold uppercase tracking-widest font-black">Investment Protocol: Starting at {service.priceRange}</span>
                   </div>
-                  <Link to={`/strategy?service=${service.id}`} className="inline-flex items-center justify-center px-10 py-4 bg-yellow-500 text-black font-bold text-xs tracking-[0.2em] uppercase rounded-full hover:bg-yellow-400 transition-all duration-300 shadow-[0_0_20px_rgba(234,179,8,0.2)] hover:shadow-[0_0_30px_rgba(253,224,71,0.6)] gap-3 group">
+                  <Link to={`/strategy?service=${service.id}`} className="inline-flex items-center justify-center px-10 py-4 bg-blue-500 text-white font-bold text-xs tracking-[0.2em] uppercase rounded-full hover:bg-blue-400 transition-all duration-300 shadow-[0_0_20px_rgba(59,130,246,0.2)] hover:shadow-[0_0_30px_rgba(96,165,250,0.6)] gap-3 group">
                     Begin Strategy Protocol
-                    <ArrowRight className="w-5 h-5 transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110 group-hover:text-yellow-100" />
+                    <ArrowRight className="w-5 h-5 transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110 group-hover:text-blue-100" />
                   </Link>
                 </div>
              </div>
              
              {/* Visual Asset - Right Pillar */}
              <div className="relative">
-                <div className="absolute inset-0 bg-yellow-500/10 rounded-3xl blur-[100px] -z-10"></div>
+                <div className="absolute inset-0 bg-blue-500/10 rounded-3xl blur-[100px] -z-10"></div>
                 <motion.div 
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 1, ease: [0.33, 1, 0.68, 1] }}
-                  className="aspect-square lg:aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-black p-2 shadow-2xl relative group"
+                  className="aspect-square lg:aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-[#18191A] p-2 shadow-2xl relative group"
                 >
                    <div className="w-full h-full rounded-2xl overflow-hidden relative">
                       <img 
@@ -81,9 +81,9 @@ export function ServiceDetailPage() {
                         alt={service.title} 
                         className="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-105 transition-all duration-1000"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#18191A]/90 via-[#18191A]/20 to-transparent"></div>
                       <div className="absolute bottom-8 left-8">
-                         <p className="text-yellow-500 font-bold text-[10px] uppercase tracking-[0.3em] mb-2">Service Spec</p>
+                         <p className="text-blue-500 font-bold text-[10px] uppercase tracking-[0.3em] mb-2">Service Spec</p>
                          <h2 className="text-white font-bold text-xl uppercase tracking-tighter">ZNAHA Protocol {service.id.toUpperCase()}</h2>
                       </div>
                    </div>
@@ -97,8 +97,8 @@ export function ServiceDetailPage() {
            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Core Pillars of Implementation</h2>
            <div className="grid md:grid-cols-2 gap-6">
               {service.features.map((feature, idx) => (
-                <div key={idx} className="p-8 bg-white/5 border border-white/10 rounded-2xl flex items-start gap-4 hover:border-yellow-500/30 transition-colors">
-                  <CheckCircle2 className="w-8 h-8 text-yellow-500 shrink-0 mt-0.5" />
+                <div key={idx} className="p-8 bg-white/5 border border-white/10 rounded-2xl flex items-start gap-4 hover:border-blue-500/30 transition-colors">
+                  <CheckCircle2 className="w-8 h-8 text-blue-500 shrink-0 mt-0.5" />
                   <div>
                     <h3 className="text-lg font-bold text-white mb-2">{feature}</h3>
                     <p className="text-sm text-gray-400">Integrated as standard protocol within our tailored {service.title.toLowerCase()} roadmaps to ensure uncompromising market dominance.</p>
@@ -129,7 +129,7 @@ export function ServiceDetailPage() {
                     className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
                   >
                     <span className="font-bold text-lg">{faq.question}</span>
-                    <ChevronDown className={`w-5 h-5 text-yellow-500 transform transition-transform duration-300 ${openFaqIndex === index ? 'rotate-180' : ''}`} />
+                    <ChevronDown className={`w-5 h-5 text-blue-500 transform transition-transform duration-300 ${openFaqIndex === index ? 'rotate-180' : ''}`} />
                   </button>
                   
                   <AnimatePresence>
@@ -163,7 +163,7 @@ export function ServiceDetailPage() {
             Stop relying on generic marketing. Partner with ZNAHA to engineer a bespoke acquisition engine for your brand.
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
-            <Link to={`/strategy?service=${service.id}`} className="inline-flex w-full sm:w-auto px-10 py-5 bg-yellow-500 text-black font-bold rounded-full hover:bg-yellow-400 transition-all shadow-[0_0_30px_rgba(234,179,8,0.3)] items-center justify-center gap-2 text-lg uppercase tracking-wider">
+            <Link to={`/strategy?service=${service.id}`} className="inline-flex w-full sm:w-auto px-10 py-5 bg-blue-500 text-white font-bold rounded-full hover:bg-blue-400 transition-all shadow-[0_0_30px_rgba(59,130,246,0.3)] items-center justify-center gap-2 text-lg uppercase tracking-wider">
               Get My Free Proposal
               <ArrowRight className="w-5 h-5" />
             </Link>

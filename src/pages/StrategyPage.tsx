@@ -59,10 +59,10 @@ export function StrategyPage() {
   };
 
   const getInputClass = (name: string) => {
-    return `w-full bg-black/40 border rounded-xl px-4 py-3 placeholder-white/20 text-white focus:outline-none transition-all ${
+    return `w-full bg-[#18191A]/40 border rounded-xl px-4 py-3 placeholder-white/20 text-white focus:outline-none transition-all ${
       errors[name] 
         ? 'border-red-500 focus:border-red-500 shadow-[0_0_10px_rgba(239,68,68,0.2)]' 
-        : 'border-white/10 focus:border-yellow-500/50'
+        : 'border-white/10 focus:border-blue-500/50'
     }`;
   };
 
@@ -75,13 +75,13 @@ export function StrategyPage() {
           initial="hidden" animate="visible" variants={fadeIn}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow-500/10 border border-yellow-500/20 rounded-full w-fit mb-6">
-            <span className="flex h-2 w-2 rounded-full bg-yellow-500 animate-pulse" />
-            <span className="text-[10px] font-bold text-yellow-500 uppercase tracking-widest">Connect With Us</span>
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full w-fit mb-6">
+            <span className="flex h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
+            <span className="text-[10px] font-bold text-blue-500 uppercase tracking-widest">Connect With Us</span>
           </div>
           <h1 className="text-5xl md:text-7xl font-bold leading-[0.9] text-white mb-6 tracking-tight">
             Initiate <br className="hidden md:block"/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-yellow-200 to-white">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-200 to-white">
               The Conversation.
             </span>
           </h1>
@@ -97,11 +97,11 @@ export function StrategyPage() {
             initial="hidden" animate="visible" variants={fadeIn} transition={{ delay: 0.2 }}
             className="p-8 md:p-10 rounded-3xl bg-white/5 border border-white/10 shadow-2xl relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-500/10 rounded-full blur-[80px] -mr-10 -mt-10 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 rounded-full blur-[80px] -mr-10 -mt-10 pointer-events-none" />
             
             {isSubmitted ? (
                <div className="relative z-10 flex flex-col items-center justify-center text-center h-full py-16">
-                 <div className="w-20 h-20 bg-yellow-500/20 text-yellow-500 rounded-full flex items-center justify-center mb-6 border border-yellow-500/50">
+                 <div className="w-20 h-20 bg-blue-500/20 text-blue-500 rounded-full flex items-center justify-center mb-6 border border-blue-500/50">
                    <svg className="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                  </div>
                  <h3 className="text-3xl font-bold text-white mb-4">Request Logged.</h3>
@@ -190,7 +190,7 @@ export function StrategyPage() {
 
                 <button 
                   type="submit" 
-                  className="w-full mt-4 bg-yellow-500 text-black font-bold text-sm tracking-wider uppercase py-4 rounded-full hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.2)] flex justify-center items-center gap-2"
+                  className="w-full mt-4 bg-blue-500 text-white font-bold text-sm tracking-wider uppercase py-4 rounded-full hover:bg-blue-400 transition-all shadow-[0_0_20px_rgba(59,130,246,0.2)] flex justify-center items-center gap-2"
                 >
                   Request Private Consultation
                   <ArrowRight className="w-4 h-4" />
@@ -212,27 +212,27 @@ export function StrategyPage() {
               
               <div className="space-y-6">
                 <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-yellow-500/50 transition-colors bg-white/5 text-yellow-500">
+                  <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-blue-500/50 transition-colors bg-white/5 text-blue-500">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
                     <p className="text-xs text-gray-500 font-bold uppercase tracking-widest">Email</p>
-                    <a href="mailto:hello@znaha.agency" className="text-lg font-medium hover:text-yellow-500 transition-colors tracking-wide">hello@znaha.agency</a>
+                    <a href="mailto:hello@znaha.agency" className="text-lg font-medium hover:text-blue-500 transition-colors tracking-wide">hello@znaha.agency</a>
                   </div>
                 </div>
                 
                 <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-yellow-500/50 transition-colors bg-white/5 text-yellow-500">
+                  <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-blue-500/50 transition-colors bg-white/5 text-blue-500">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
                     <p className="text-xs text-gray-500 font-bold uppercase tracking-widest">Phone</p>
-                    <a href="tel:+12125550199" className="text-lg font-medium hover:text-yellow-500 transition-colors tracking-wide">+1 (212) 555-0199</a>
+                    <a href="tel:+12125550199" className="text-lg font-medium hover:text-blue-500 transition-colors tracking-wide">+1 (212) 555-0199</a>
                   </div>
                 </div>
 
                 <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-yellow-500/50 transition-colors bg-white/5 text-yellow-500">
+                  <div className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center group-hover:border-blue-500/50 transition-colors bg-white/5 text-blue-500">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
