@@ -59,9 +59,9 @@ export function ServiceDetailPage() {
                     <Coins className="w-5 h-5" />
                     <span className="text-sm font-bold uppercase tracking-widest font-black">Investment Protocol: Starting at {service.priceRange}</span>
                   </div>
-                  <Link to={`/strategy?service=${service.id}`} className="inline-flex items-center justify-center px-10 py-4 bg-yellow-500 text-black font-bold text-xs tracking-[0.2em] uppercase rounded-full hover:bg-yellow-400 transition-all shadow-[0_0_20px_rgba(234,179,8,0.2)] gap-3 group">
+                  <Link to={`/strategy?service=${service.id}`} className="inline-flex items-center justify-center px-10 py-4 bg-yellow-500 text-black font-bold text-xs tracking-[0.2em] uppercase rounded-full hover:bg-yellow-400 transition-all duration-300 shadow-[0_0_20px_rgba(234,179,8,0.2)] hover:shadow-[0_0_30px_rgba(253,224,71,0.6)] gap-3 group">
                     Begin Strategy Protocol
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-5 h-5 transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110 group-hover:text-yellow-100" />
                   </Link>
                 </div>
              </div>
