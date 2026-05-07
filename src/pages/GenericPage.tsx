@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { navigationData } from '../data/navigation';
 import { servicesData } from '../data/services';
+import { exploreData } from '../data/explore';
 import { motion, AnimatePresence } from 'motion/react';
 import { PageTransition } from '../components/PageTransition';
 import { FloatingText, TiltHeading } from '../components/FloatingText';
-import { ArrowRight, ChevronRight, CheckCircle2, Plus, Minus, Coins } from 'lucide-react';
+import { ArrowRight, ChevronRight, CheckCircle2, Plus, Minus, Coins, Zap } from 'lucide-react';
 
 export function GenericPage() {
   const { pageId } = useParams();
@@ -18,6 +19,9 @@ export function GenericPage() {
   // Try to find matching service for pricing
   const matchingService = servicesData.find(s => s.id === pageId || s.id === pageId?.replace('knowledge-', ''));
   const price = matchingService?.priceRange || "$2,000+ per month";
+  
+  // Check if it's an Explore page
+  const specificExploreData = pageId ? (exploreData as any)[pageId] : null;
 
   if (!item) {
     return (
@@ -73,6 +77,13 @@ export function GenericPage() {
               <span className="w-2 h-2 rounded-full bg-yellow-500 animate-pulse" />
               {categoryName} / {item.name}
             </div>
+            
+            {specificExploreData && (
+              <div className="mb-8 inline-flex p-5 rounded-2xl bg-white/5 border border-white/10 text-yellow-500 shadow-[0_0_30px_rgba(234,179,8,0.1)] w-fit">
+                {specificExploreData.icon}
+              </div>
+            )}
+            
             <h1 className="text-4xl sm:text-5xl md:text-7xl font-sans font-black text-white mb-8 tracking-tighter leading-[1.1] break-words">
               <TiltHeading>
                 <FloatingText depth={20} className="block">Elevating</FloatingText>
@@ -82,7 +93,9 @@ export function GenericPage() {
               </span>
             </h1>
             <p className="text-xl text-gray-400 leading-relaxed font-serif max-w-2xl">
-              We engineer luxury digital experiences and precision-driven acquisition strategies tailored specifically for {item.name.toLowerCase()}. Dominate your niche with our elite methodologies.
+              {specificExploreData 
+                ? specificExploreData.intro 
+                : `We engineer luxury digital experiences and precision-driven acquisition strategies tailored specifically for ${item.name.toLowerCase()}. Dominate your niche with our elite methodologies.`}
             </p>
           </motion.div>
         </div>
@@ -92,32 +105,52 @@ export function GenericPage() {
           <div className="grid md:grid-cols-12 gap-16">
             
             <div className="md:col-span-8 prose prose-invert prose-lg max-w-none">
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-                <h2 className="text-3xl font-bold text-white mb-6">Strategic Overview</h2>
-                <p className="text-gray-400 leading-relaxed mb-8">
-                  The landscape of <strong>{item.name}</strong> is evolving rapidly. For ultra-premium brands, standard out-of-the-box solutions are no longer sufficient. Our approach to {item.name.toLowerCase()} relies on deep structural analysis, data-driven insights, and an uncompromising commitment to aesthetic and functional perfection.
-                </p>
-                <p className="text-gray-400 leading-relaxed mb-8">
-                  By integrating advanced methodologies with your core brand identity, we ensure that every facet of your {item.name.toLowerCase()} strategy is engineered for maximum ROI and market dominance. We don't just participate in the market; we redefine its boundaries.
-                </p>
-              </motion.div>
-
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-16">
-                <h3 className="text-2xl font-bold text-white mb-6">Core Methodologies</h3>
-                <div className="grid sm:grid-cols-2 gap-6 mt-8">
-                  {[
-                    "Data-Driven Analysis & Synthesis",
-                    "Luxury Aesthetic Integration",
-                    "High-Intent Audience Targeting",
-                    "Continuous Performance Optimization"
-                  ].map((feature, i) => (
-                    <div key={i} className="flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/10">
-                      <CheckCircle2 className="w-6 h-6 text-yellow-500 shrink-0" />
-                      <p className="text-sm font-bold text-gray-200">{feature}</p>
+              
+              {specificExploreData ? (
+                <>
+                  <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                    <h2 className="text-3xl font-bold text-white mb-6">Strategic Intelligence</h2>
+                    <div className="flex flex-col gap-8">
+                      {specificExploreData.sections.map((section: any, idx: number) => (
+                        <div key={idx} className="p-8 bg-white/5 border border-white/10 rounded-3xl relative overflow-hidden group">
+                          <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-500/5 rounded-full blur-3xl -mr-10 -mt-10 transition-transform group-hover:scale-150" />
+                          <h3 className="text-2xl font-bold text-yellow-500 mb-4">{section.heading}</h3>
+                          <p className="text-gray-300 leading-relaxed">{section.text}</p>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-              </motion.div>
+                  </motion.div>
+                </>
+              ) : (
+                <>
+                  <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                    <h2 className="text-3xl font-bold text-white mb-6">Strategic Overview</h2>
+                    <p className="text-gray-400 leading-relaxed mb-8">
+                      The landscape of <strong>{item.name}</strong> is evolving rapidly. For ultra-premium brands, standard out-of-the-box solutions are no longer sufficient. Our approach to {item.name.toLowerCase()} relies on deep structural analysis, data-driven insights, and an uncompromising commitment to aesthetic and functional perfection.
+                    </p>
+                    <p className="text-gray-400 leading-relaxed mb-8">
+                      By integrating advanced methodologies with your core brand identity, we ensure that every facet of your {item.name.toLowerCase()} strategy is engineered for maximum ROI and market dominance. We don't just participate in the market; we redefine its boundaries.
+                    </p>
+                  </motion.div>
+
+                  <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-16">
+                    <h3 className="text-2xl font-bold text-white mb-6">Core Methodologies</h3>
+                    <div className="grid sm:grid-cols-2 gap-6 mt-8">
+                      {[
+                        "Data-Driven Analysis & Synthesis",
+                        "Luxury Aesthetic Integration",
+                        "High-Intent Audience Targeting",
+                        "Continuous Performance Optimization"
+                      ].map((feature, i) => (
+                        <div key={i} className="flex items-start gap-4 p-6 rounded-2xl bg-white/5 border border-white/10">
+                          <CheckCircle2 className="w-6 h-6 text-yellow-500 shrink-0" />
+                          <p className="text-sm font-bold text-gray-200">{feature}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+                </>
+              )}
               
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-20">
                 <h3 className="text-2xl font-bold text-white mb-6">Frequently Asked Questions</h3>
@@ -165,7 +198,7 @@ export function GenericPage() {
                 className="sticky top-32 p-8 rounded-3xl bg-[#0a0a0a] border border-white/10 shadow-2xl mb-8"
               >
                 <div className="w-12 h-12 bg-yellow-500/10 rounded-full flex items-center justify-center mb-6">
-                  <Coins className="w-6 h-6 text-yellow-500" />
+                  {specificExploreData ? specificExploreData.icon : <Coins className="w-6 h-6 text-yellow-500" />}
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">Investment Spec</h3>
                 <p className="text-sm text-gray-500 mb-6 uppercase tracking-widest font-black">Starting at {price}</p>
@@ -195,7 +228,7 @@ export function GenericPage() {
                 <div className="mt-8 pt-8 border-t border-white/10">
                   <p className="text-[10px] uppercase tracking-widest text-gray-500 mb-4 font-bold">Related {categoryName}</p>
                   <div className="flex flex-col gap-3">
-                    {Object.values(navigationData).find(c => c.title === categoryName)?.items.filter(i => i.id !== item.id).slice(0, 4).map(related => {
+                    {(Object.values(navigationData).find(c => c.title === categoryName)?.items?.filter(i => i.id !== item.id)?.slice(0, 4) || []).map(related => {
                       const isDetailedService = categoryName === "Services";
                       const route = isDetailedService ? `/services/${related.id}` : `/${related.id}`;
                       return (
